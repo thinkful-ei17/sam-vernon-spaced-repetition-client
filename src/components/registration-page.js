@@ -14,7 +14,7 @@ export function RegistrationPage(props) {
             <h2>Register for SATutor</h2>
             <RegistrationForm />
             <p>
-                Already have an account? <Link to="/">Login</Link> here.
+                Already have an account? <Link to="/">Login here.</Link>
             </p>
         </div>
     );

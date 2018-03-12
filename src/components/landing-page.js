@@ -16,7 +16,7 @@ export function LandingPage(props) {
             <h2>Welcome to SATutor</h2>
             <LoginForm />
             <p>
-                Don't have an account? <Link to="/register">Register</Link> now.
+                Don't have an account? <Link to="/register">Register now.</Link>
             </p>
         </div>
     );
