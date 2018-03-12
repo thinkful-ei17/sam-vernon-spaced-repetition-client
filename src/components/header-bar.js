@@ -11,20 +11,40 @@ export class HeaderBar extends React.Component {
     }
 
     render() {
-        let logOutButton;
+        let logInLogOut=(
+            <h2 className="header-item">Log In</h2>
+        );
+        let faqs = (
+            <h2 className="header-item">FAQs</h2>
+        );
+        let about = (
+            <h2 className="header-item">About</h2>
+        );
+        let register = (
+            <h2 className="header-item">Register</h2>
+        );
+
         if (this.props.loggedIn) {
-            logOutButton = (
+            logInLogOut = (
                 <button onClick={() => this.logOut()}>Log out</button>
+            );
+            faqs = (
+                <div></div>
+            );
+            about = (
+                <div></div>
+            );
+            register = (
+                <div></div>
             );
         }
         return (
             <div className="header-bar">
                 <h1 className="header-item">SATutor</h1>
-                <h2 className="header-item">FAQs</h2>
-                <h2 className="header-item">About</h2>
-                <h2 className="header-item">Register</h2>
-                <h2 className="header-item">Log In</h2>
-                {logOutButton}
+                {faqs}
+                {about}
+                {register}
+                {logInLogOut}
             </div>
         );
     }
