@@ -13,20 +13,32 @@ export class HeaderBar extends React.Component {
 
     render() {
         let logInLogOut=(
-            <Link to="/" className="header-link">
+            <Link to="/" className="header-link desktop">
                 <h2 className="header-item">Log In</h2>
             </Link>
         );
         let faqs = (
-            <h2 className="header-item">FAQs</h2>
+            <Link to="/faqs" className="header-link desktop">
+                <h2 className="header-item">FAQs</h2>
+            </Link>
         );
         let about = (
-            <h2 className="header-item">About</h2>
+            <Link to="/about" className="header-link desktop">
+                <h2 className="header-item">About</h2>
+            </Link>
         );
         let register = (
-            <Link to="/register" className="header-link">
+            <Link to="/register" className="header-link desktop">
                 <h2 className="header-item">Register</h2>
             </Link>
+        );
+
+        let hamburgerIcon = (
+            <div className="hamburger-icon mobile">
+                <span className="hamburger-top-stripe hamburger"></span>
+                <span className="hamburger-middle-stripe hamburger"></span>
+                <span className="hamburger-bottom-stripe hamburger"></span>
+            </div>
         );
 
         if (this.props.loggedIn) {
@@ -43,13 +55,18 @@ export class HeaderBar extends React.Component {
                 <div></div>
             );
         }
+
         return (
             <div className="header-bar">
-                <h1 className="header-item">SATutor</h1>
+                <Link to="/" className="header-link">
+                    <h1 className="header-item">SATutor</h1>
+                </Link>
                 {faqs}
                 {about}
                 {register}
                 {logInLogOut}
+
+                {hamburgerIcon}                
             </div>
         );
     }

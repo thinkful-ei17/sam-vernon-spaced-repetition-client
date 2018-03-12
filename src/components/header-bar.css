@@ -17,3 +17,72 @@
 .header-item {
     margin: 10px 15px;
 }
+
+.desktop {
+    display: none;
+}
+
+.hamburger-icon {
+    width: 43px;
+    height: 29px;
+    position: relative;
+    margin-right: 15px;
+    transform: rotate(0deg);
+    transition: .5s ease-in-out;
+    cursor: pointer;
+}
+      
+.hamburger {
+    display: block;
+    position: absolute;
+    height: 5px;
+    width: 100%;
+    background: #edf1de;
+    border-radius: 5px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+.hamburger-top-stripe {
+    top: 0px;
+    transform-origin: left center;
+}
+  
+.hamburger-middle-stripe {
+    top: 12px;
+    transform-origin: left center;
+}
+  
+.hamburger-bottom-stripe {
+    top: 24px;
+    transform-origin: left center;
+}
+  
+.hamburger-top-open {
+    transform: rotate(45deg);
+    top: -3px;
+    left: 4px;
+}
+  
+.hamburger-middle-open {
+    width: 0%;
+    opacity: 0;
+}
+  
+.hamburger-bottom-open {
+    transform: rotate(-45deg);
+    top: 27px;
+    left: 5px;
+}
+
+@media screen and (min-width: 600px) {
+    .desktop {
+        display: block;
+    }
+
+    .mobile {
+        display: none;
+    }
+}
