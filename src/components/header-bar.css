@@ -9,6 +9,11 @@
     color: #edf1de;
 }
 
+.header-link {
+    text-decoration: none;
+    color: #edf1de;
+}
+
 .header-item {
     margin: 10px 15px;
 }
