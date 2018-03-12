@@ -12,11 +12,11 @@ export function LandingPage(props) {
     }
 
     return (
-        <div className="home">
-            <h2>Welcome to SATutuor</h2>
+        <div className="landing-page">
+            <h2>Welcome to SATutor</h2>
             <LoginForm />
             <p>
-                Don't have an account? <Link to="/register">Register Now!</Link>
+                Don't have an account? <Link to="/register">Register</Link> now.
             </p>
         </div>
     );
