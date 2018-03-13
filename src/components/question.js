@@ -5,10 +5,6 @@ import { generateQuestionFeedback } from '../actions/question';
 import './question.css';
 
 export class Question extends React.Component {
-    componentDidMount() {
-        this.props.dispatch(fetchQuestion());
-    }
-    
     shuffle = array => {
         for(let i = 0; i < array.length; i++){
           let randomIndex = this._getRandomInt(array.length - i);
@@ -29,7 +25,7 @@ export class Question extends React.Component {
     
     render() {
 
-        const { word, definition, correctAnswer, incorrectAnswers, prompt } = question.data.head.value;
+        const { word, definition, correctAnswer, incorrectAnswers, prompt } = this.props.question;
 
         let shuffledArray = this.shuffle(incorrectAnswers);
         shuffledArray = shuffledArray.slice(0,4);
@@ -46,7 +42,7 @@ export class Question extends React.Component {
         
         return (
             <div className="question">
-                <h2>{question.word}</h2>
+                <h2>{word}</h2>
                 <div className="question-options-button-container">
                     <button className="question-option-button" value={shuffledArray[0]} onClick = { event => handleResponse(event.target.value)}>A. {shuffledArray[0]}</button>
                     <button className="question-option-button" value={shuffledArray[1]} onClick = { event => handleResponse(event.target.value)}>B. {shuffledArray[1]}</button>
@@ -63,7 +59,7 @@ const mapStateToProps = state => {
     return {
         username: state.auth.currentUser.username,
         name: `${currentUser.firstName} ${currentUser.lastName}`,
-        question: state.question.question
+        question: state.auth.currentUser.wordSets[0].data.head.value
     };
 };
 
