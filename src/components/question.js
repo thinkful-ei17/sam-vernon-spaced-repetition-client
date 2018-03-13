@@ -1,8 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import requiresLogin from './requires-login';
 import './question.css';
 
 export class Question extends React.Component {
-    shuffle(array) {
+    shuffle = array => {
         for(let i = 0; i < array.length; i++){
           let randomIndex = this._getRandomInt(array.length - i);
           this._swap(array, i, randomIndex + i);
@@ -10,7 +12,7 @@ export class Question extends React.Component {
         return array;
       }
       
-    _getRandomInt(number) {
+    _getRandomInt = number => {
         return Math.floor(Math.random() * number);
     }
       
@@ -29,10 +31,20 @@ export class Question extends React.Component {
             prompt: "Because he was nervous about performing in front of a crowd, Jed was ambivalent about entering the singing competition."
         }
 
-        let shuffledArray = this.shuffle(question.wrongAnswers);
-        shuffledArray = shuffledArray.slice(0,4);
-        shuffledArray[this._getRandomInt(4)] = question.rightAnswer;
+        const { word, definition, rightAnswer, wrongAnswers, prompt } = question;
 
+        let shuffledArray = this.shuffle(wrongAnswers);
+        shuffledArray = shuffledArray.slice(0,4);
+        shuffledArray[this._getRandomInt(4)] = rightAnswer;
+
+        const handleResponse = answer => {
+            let correct = true;
+            if (answer !== rightAnswer) {
+                correct = false;
+            }
+            // ping server Correct or Incorrect
+            // this.props.dispatch(generateQuestionFeedback(word, definition, rightAnswer, shuffledArray, prompt, correct));
+        }
         
         return (
             <div className="question">
@@ -48,4 +60,12 @@ export class Question extends React.Component {
     }
 }
 
-export default Question;
+const mapStateToProps = state => {
+    const {currentUser} = state.auth;
+    return {
+        username: state.auth.currentUser.username,
+        name: `${currentUser.firstName} ${currentUser.lastName}`,
+    };
+};
+
+export default requiresLogin()(connect(mapStateToProps)(Question));
