@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
+import { generateQuestionFeedback } from '../actions/question';
 import './question.css';
 
 export class Question extends React.Component {
@@ -43,14 +44,14 @@ export class Question extends React.Component {
                 correct = false;
             }
             // ping server Correct or Incorrect
-            // this.props.dispatch(generateQuestionFeedback(word, definition, rightAnswer, shuffledArray, prompt, correct));
+            this.props.dispatch(generateQuestionFeedback(word, definition, rightAnswer, shuffledArray, prompt, correct));
         }
         
         return (
             <div className="question">
                 <h2>{question.word}</h2>
                 <div className="question-options-button-container">
-                    <button className="question-option-button" value={shuffledArray[0]} onClick = { event => console.log(event.target.value)}>A. {shuffledArray[0]}</button>
+                    <button className="question-option-button" value={shuffledArray[0]} onClick = { event => handleResponse(event.target.value)}>A. {shuffledArray[0]}</button>
                     <button className="question-option-button" value={shuffledArray[1]} onClick = { event => console.log(event.target.value)}>B. {shuffledArray[1]}</button>
                     <button className="question-option-button" value={shuffledArray[2]} onClick = { event => console.log(event.target.value)}>C. {shuffledArray[2]}</button>
                     <button className="question-option-button" value={shuffledArray[3]} onClick = { event => console.log(event.target.value)}>D. {shuffledArray[3]}</button>
