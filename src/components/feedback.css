@@ -1,5 +1,33 @@
-.feedback {
+.question-word {
     text-align: center;
+}
+
+.word-definition-container {
+    background: #f4f7f8;
+    color: #212121;
+    padding: 10px;
+    margin: 0 10%;
+    border-radius: 8px;
+}
+
+.word-definition {
+    display: block;
+    margin: 0;
+}
+
+.word-sentence-example {
+    display: block;
+    margin: 10%;
+}
+
+.question-feedback-text {
+    text-align: center;
+    font-weight: normal;
+}
+
+.correct-answer-text {
+    font-weight: bold;
+    color: #253628;
 }
 
 .question-options-container {
@@ -15,4 +43,8 @@
     font-size: 24px;
     margin: 10px auto;
     padding: 20px;
+}
+
+.wrong-answer-option {
+    text-decoration: line-through;
 }
