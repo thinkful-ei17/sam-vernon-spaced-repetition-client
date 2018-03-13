@@ -5,6 +5,10 @@ import { generateQuestionFeedback } from '../actions/question';
 import './question.css';
 
 export class Question extends React.Component {
+    componentDidMount() {
+        this.props.dispatch(fetchQuestion());
+    }
+    
     shuffle = array => {
         for(let i = 0; i < array.length; i++){
           let randomIndex = this._getRandomInt(array.length - i);
@@ -24,27 +28,20 @@ export class Question extends React.Component {
       };
     
     render() {
-        const question = {
-            word: "Ambivalent",
-            definition: "having mixed feelings or contradictory ideas about something or someone.",
-            rightAnswer: "conflicted",
-            wrongAnswers: ["unrealistic", "apprehensive", "supportive", "annoyed", "stressed"],
-            prompt: "Because he was nervous about performing in front of a crowd, Jed was ambivalent about entering the singing competition."
-        }
 
-        const { word, definition, rightAnswer, wrongAnswers, prompt } = question;
+        const { word, definition, correctAnswer, incorrectAnswers, prompt } = question.data.head.value;
 
-        let shuffledArray = this.shuffle(wrongAnswers);
+        let shuffledArray = this.shuffle(incorrectAnswers);
         shuffledArray = shuffledArray.slice(0,4);
-        shuffledArray[this._getRandomInt(4)] = rightAnswer;
+        shuffledArray[this._getRandomInt(4)] = correctAnswer;
 
         const handleResponse = answer => {
             let correct = true;
-            if (answer !== rightAnswer) {
+            if (answer !== correctAnswer) {
                 correct = false;
             }
             // ping server Correct or Incorrect
-            this.props.dispatch(generateQuestionFeedback(word, definition, rightAnswer, shuffledArray, prompt, correct));
+            this.props.dispatch(generateQuestionFeedback(word, definition, correctAnswer, shuffledArray, prompt, correct));
         }
         
         return (
@@ -66,6 +63,7 @@ const mapStateToProps = state => {
     return {
         username: state.auth.currentUser.username,
         name: `${currentUser.firstName} ${currentUser.lastName}`,
+        question: state.question.question
     };
 };
 

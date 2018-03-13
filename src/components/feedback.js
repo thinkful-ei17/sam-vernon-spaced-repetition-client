@@ -6,11 +6,11 @@ import './feedback.css';
 export class Feedback extends React.Component {
     
     render() {
-        const { word, definition, rightAnswer, shuffledArray, correct } = this.props.question;
+        const { word, definition, correctAnswer, shuffledArray, correct } = this.props.question;
 
         let optionFeedback = []
         for (let i = 0; i < 4; i++) {
-            if (shuffledArray[i] === rightAnswer) {
+            if (shuffledArray[i] === correctAnswer) {
                 optionFeedback[i] = "question-option correct-answer-option";
             } else {
                 optionFeedback[i] = "question-option wrong-answer-option";
@@ -18,11 +18,11 @@ export class Feedback extends React.Component {
         }
 
         let feedback = (
-            <h3 className="question-feedback-text">Incorrect. The answer was <span className="correct-answer-text">{rightAnswer}</span>.</h3>
+            <h3 className="question-feedback-text">Incorrect. The answer was <span className="correct-answer-text">{correctAnswer}</span>.</h3>
         )
         if (correct) {
             feedback = (
-                <h3 className="question-feedback-text">Correct! The answer was <span className="correct-answer-text">{rightAnswer}</span>.</h3>
+                <h3 className="question-feedback-text">Correct! The answer was <span className="correct-answer-text">{correctAnswer}</span>.</h3>
             )
         }
         
