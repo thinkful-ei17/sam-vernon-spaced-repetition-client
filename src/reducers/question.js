@@ -12,7 +12,8 @@ import {
     TOGGLE_VIEW_EXAMPLE,
     RESET_STATE,
     TOGGLE_MENU_VISIBLE,
-    SELECT_WORD_SET
+    SELECT_WORD_SET,
+    NEXT_QUESTION
 } from '../actions/question';
 
 const initialState = {
@@ -61,7 +62,7 @@ export const reducer = (state = initialState, action) => {
 
     if (action.type === SELECT_WORD_SET) {
         return Object.assign({}, state, {
-            wordSetChosen: action.name
+            wordSetChosen: action.wordSet
         })
     }
 
@@ -124,6 +125,20 @@ export const reducer = (state = initialState, action) => {
     }
 
     else if (action.type === RESET_STATE) {
+        return Object.assign({}, state, {
+          question: null,
+          word: null,
+          definition: null,
+          correctAnswer: null,
+          shuffledArray: null,
+          prompt: null,
+          correct: null,
+          viewExample: false,
+          wordSetChosen: null
+        })
+    }
+
+    else if (action.type === NEXT_QUESTION) {
         return Object.assign({}, state, {
           question: null,
           word: null,

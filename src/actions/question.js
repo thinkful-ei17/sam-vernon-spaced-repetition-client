@@ -47,8 +47,9 @@ export const fetchWordSets = () => (dispatch, getState) => {
 }
 
 export const SELECT_WORD_SET = 'SELECT_WORD_SET';
-export const selectWordSet = name => ({
-  type: SELECT_WORD_SET
+export const selectWordSet = wordSet => ({
+  type: SELECT_WORD_SET,
+  wordSet
 });
 
 export const FETCH_QUESTION_REQUEST = 'FETCH_QUESTION_REQUEST';
@@ -68,10 +69,11 @@ export const fetchQuestionError = error => ({
   error
 });
 
-export const fetchQuestion = () => (dispatch, getState) => {
+export const fetchQuestion = wordSet => (dispatch, getState) => {
 	dispatch(fetchQuestionRequest());
 	const authToken = getState().auth.authToken;
-	return fetch(`${API_BASE_URL}/user/question?wordSet=Foundation`, 
+    console.log(`${API_BASE_URL}/user/question?wordSet=${wordSet}`);
+    return fetch(`${API_BASE_URL}/user/question?wordSet=${wordSet}`, 
 		{
   		method: 'GET',
   		headers: {

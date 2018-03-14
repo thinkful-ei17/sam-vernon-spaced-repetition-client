@@ -5,8 +5,8 @@ import { selectWordSet } from '../actions/question';
 import './word-sets-dashboard.css';
 
 export class WordSetsDashboard extends React.Component {
-    selectWordSet(name) {
-        this.props.dispatch(selectWordSet())
+    selectWordSet(wordSet) {
+        this.props.dispatch(selectWordSet(wordSet))
     }
     
     render() {
@@ -64,7 +64,7 @@ export class WordSetsDashboard extends React.Component {
                 newWordSets = newWordSets.map( wordSet => {
                     return (
                         <div className="word-set-container" key={wordSet.id}>
-                            <button className="word-set-button" value={wordSet.name} onClick={event => console.log(event.target.value)}>{wordSet.name}</button>
+                            <button className="word-set-button" value={wordSet.name} onClick={event => this.selectWordSet(event.target.value)}>{wordSet.name}</button>
                             {/* <div>{wordSet.description}</div> */}
                         </div>
                     )

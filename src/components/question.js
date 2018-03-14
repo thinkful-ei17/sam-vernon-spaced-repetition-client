@@ -6,7 +6,7 @@ import './question.css';
 
 export class Question extends React.Component {
     componentDidMount() {
-        this.props.dispatch(fetchQuestion());
+        this.props.dispatch(fetchQuestion(this.props.wordSet));
     }
     
     shuffle = array => {
@@ -69,7 +69,8 @@ const mapStateToProps = state => {
     return {
         username: state.auth.currentUser.username,
         name: `${currentUser.firstName} ${currentUser.lastName}`,
-        question: state.question.question
+        question: state.question.question,
+        wordSet: state.question.wordSetChosen
     };
 };
 
