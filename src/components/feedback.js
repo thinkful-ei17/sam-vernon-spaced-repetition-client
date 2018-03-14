@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
-import { toggleViewExample, resetState, fetchQuestion } from '../actions/question';
+import { toggleViewExample, nextQuestion, fetchQuestion } from '../actions/question';
 import './feedback.css';
 
 export class Feedback extends React.Component {
     loadNextQuestion() {
-        this.props.dispatch(resetState());
+        this.props.dispatch(nextQuestion());
         this.props.dispatch(fetchQuestion());   
     }
 

@@ -153,6 +153,11 @@ export const toggleViewExample = () => ({
     type: TOGGLE_VIEW_EXAMPLE
 })
 
+export const NEXT_QUESTION = 'NEXT_QUESTION';
+export const nextQuestion = () => ({
+    type: NEXT_QUESTION
+})
+
 export const RESET_STATE = 'RESET_STATE';
 export const resetState = () => ({
     type: RESET_STATE
