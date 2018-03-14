@@ -6,20 +6,41 @@ import './question.css';
 export class WordSetsDashboard extends React.Component {
     render() {
 
+        let usersWordSets;
+        let newWordSets = (
+            <div>Loading...</div>
+        )
+
         if (this.props.wordSets !== null) {
 
-            let wordSets;
+            usersWordSets = this.props.usersWordSets;
 
+            usersWordSets = usersWordSets.map( wordSet => {
+                return (
+                    <div className="wordSet-container">
+                        <button className="wordSet-button" value={wordSet.name} onClick={event => console.log(event.target.value)}>{wordSet.name}</button>
+                        <div>Progress: {wordSet.mastery}</div>
+                    </div>
+                )
+            });
 
+            newWordSets = this.props.wordSets;
 
-            return (
-                <div className="wordSets">
-                    {wordSets}
-                </div>
-            )
+            newWordSets = newWordSets.map( wordSet => {
+                return (
+                    <div className="wordSet-container">
+                        <button className="wordSet-button" value={wordSet.name} onClick={event => console.log(event.target.value)}>{wordSet.name}</button>
+                        {/* <div>{wordSet.description}</div> */}
+                    </div>
+                )
+            });
         }
+
         return (
-            <div>Loading...</div>
+            <div className="wordSets">
+                {usersWordSets}
+                {newWordSets}
+            </div>
         )
     }
 }
@@ -29,6 +50,7 @@ const mapStateToProps = state => {
     return {
         username: state.auth.currentUser.username,
         name: `${currentUser.firstName} ${currentUser.lastName}`,
+        usersWordSets: state.auth.currentUser.wordSets,
         wordSets: state.question.wordSets
     };
 };

@@ -10,13 +10,13 @@ import './dashboard.css';
 
 export class Dashboard extends React.Component {
     componentDidMount() {
-        this.props.dispatch(fetchWordSets);
+        this.props.dispatch(fetchWordSets());
     }
     
     render() {
         let content = <WordSetsDashboard />;
         
-        if (this.props.wordSetChosen !== null) {
+        if (this.props.question.wordSetChosen !== null) {
             content = <Question />;
             if (this.props.question.correct !== null) {
                 content = <Feedback />

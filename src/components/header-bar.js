@@ -2,12 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { clearAuth } from '../actions/auth';
-import { toggleMenuVisible } from '../actions/question';
+import { toggleMenuVisible, resetState } from '../actions/question';
 import { clearAuthToken } from '../local-storage';
 import './header-bar.css';
 
 export class HeaderBar extends React.Component {
     logOut() {
+        this.props.dispatch(resetState());
         this.props.dispatch(clearAuth());
         clearAuthToken();
     }
