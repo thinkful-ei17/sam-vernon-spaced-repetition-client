@@ -62,7 +62,6 @@ export class Question extends React.Component {
 
 const mapStateToProps = state => {
     const {currentUser} = state.auth;
-    console.log(state.question);
     return {
         username: state.auth.currentUser.username,
         name: `${currentUser.firstName} ${currentUser.lastName}`,

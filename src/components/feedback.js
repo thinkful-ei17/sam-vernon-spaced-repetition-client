@@ -1,10 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
+import { resetState, fetchQuestion } from '../actions/question';
 import './feedback.css';
 
 export class Feedback extends React.Component {
-    
+    loadNextQuestion() {
+        this.props.dispatch(resetState());
+        this.props.dispatch(fetchQuestion());   
+    }
+
     render() {
         const { word, definition, correctAnswer, shuffledArray, correct } = this.props.question;
 
@@ -25,6 +30,8 @@ export class Feedback extends React.Component {
                 <h3 className="question-feedback-text">Correct! The answer was <span className="correct-answer-text">{correctAnswer}</span>.</h3>
             )
         }
+
+        
         
         return (
             <div className="feedback">
@@ -39,6 +46,7 @@ export class Feedback extends React.Component {
                     <div className={optionFeedback[2]}>C. {shuffledArray[2]}</div>
                     <div className={optionFeedback[3]}>D. {shuffledArray[3]}</div>
                 </div>
+                <button onClick={() => this.loadNextQuestion()}>Next Word</button>
             </div>
         )
     }

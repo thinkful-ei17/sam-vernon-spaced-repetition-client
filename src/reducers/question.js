@@ -5,7 +5,8 @@ import {
     SEND_QUESTION_RESPONSE_REQUEST,
     SEND_QUESTION_RESPONSE_SUCCESS,
     SEND_QUESTION_RESPONSE_ERROR,
-    GENERATE_QUESTION_FEEDBACK 
+    GENERATE_QUESTION_FEEDBACK,
+    RESET_STATE 
 } from '../actions/question';
 
 const initialState = {
@@ -71,6 +72,18 @@ export const reducer = (state = initialState, action) => {
             prompt: action.prompt,
             correct: action.correct
           })
+    }
+
+    else if (action.type === RESET_STATE) {
+        return Object.assign({}, state, {
+          question: null,
+          word: null,
+          definition: null,
+          correctAnswer: null,
+          shuffledArray: null,
+          prompt: null,
+          correct: null
+        })
     }
 
     return state
