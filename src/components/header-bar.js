@@ -2,13 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { clearAuth } from '../actions/auth';
+import { toggleMenuVisible, resetState } from '../actions/question';
 import { clearAuthToken } from '../local-storage';
 import './header-bar.css';
 
 export class HeaderBar extends React.Component {
     logOut() {
+        this.props.dispatch(resetState());
         this.props.dispatch(clearAuth());
         clearAuthToken();
+    }
+
+    toggleMenuVisible() {
+        this.props.dispatch(toggleMenuVisible());
     }
 
     render() {
@@ -34,16 +40,26 @@ export class HeaderBar extends React.Component {
         );
 
         let hamburgerIcon = (
-            <div className="hamburger-icon mobile">
+            <div className="hamburger-icon mobile" onClick={() => this.toggleMenuVisible()}>
                 <span className="hamburger-top-stripe hamburger"></span>
                 <span className="hamburger-middle-stripe hamburger"></span>
                 <span className="hamburger-bottom-stripe hamburger"></span>
             </div>
         );
 
+        if (this.props.menuVisible) {
+            hamburgerIcon = (
+                <div className="hamburger-icon mobile" onClick={() => this.toggleMenuVisible()}>
+                    <span className="hamburger-top-stripe hamburger-top-open hamburger"></span>
+                    <span className="hamburger-middle-stripe hamburger-middle-open hamburger"></span>
+                    <span className="hamburger-bottom-stripe hamburger-bottom-open hamburger"></span>
+                </div>
+            );
+        }
+
         if (this.props.loggedIn) {
             logInLogOut = (
-                <button className="log-out-button" onClick={() => this.logOut()}>Log out</button>
+                <button className="desktop log-out-button" onClick={() => this.logOut()}>Log out</button>
             );
             faqs = (
                 <div></div>
@@ -73,7 +89,8 @@ export class HeaderBar extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    loggedIn: state.auth.currentUser !== null
+    loggedIn: state.auth.currentUser !== null,
+    menuVisible: state.question.menuVisible
 });
 
 export default connect(mapStateToProps)(HeaderBar);
