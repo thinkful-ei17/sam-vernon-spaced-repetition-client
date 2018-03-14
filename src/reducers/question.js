@@ -7,10 +7,12 @@ import {
     SEND_QUESTION_RESPONSE_ERROR,
     GENERATE_QUESTION_FEEDBACK,
     TOGGLE_VIEW_EXAMPLE,
-    RESET_STATE
+    RESET_STATE,
+    TOGGLE_MENU_VISIBLE
 } from '../actions/question';
 
 const initialState = {
+    menuVisible: false,
     loading: false,
     error: null,
     question: null,
@@ -24,7 +26,13 @@ const initialState = {
 }
 
 export const reducer = (state = initialState, action) => {
-    if (action.type === FETCH_QUESTION_REQUEST) {
+    if (action.type === TOGGLE_MENU_VISIBLE) {
+        return Object.assign({}, state, {
+            menuVisible: !state.menuVisible
+        })
+    }
+    
+    else if (action.type === FETCH_QUESTION_REQUEST) {
 		return Object.assign({}, state, {
 			loading: true,
 		})
