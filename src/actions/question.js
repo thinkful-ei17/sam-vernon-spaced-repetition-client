@@ -5,6 +5,53 @@ export const toggleMenuVisible = () => ({
   type: TOGGLE_MENU_VISIBLE
 });
 
+export const FETCH_WORDSETS_REQUEST = 'FETCH_WORDSETS_REQUEST';
+export const fetchWordSetsRequest = () => ({
+  type: FETCH_WORDSETS_REQUEST
+});
+
+export const FETCH_WORDSETS_SUCCESS = 'FETCH_WORDSETS_SUCCESS';
+export const fetchWordSetsSuccess = wordSets => ({
+  type: FETCH_WORDSETS_SUCCESS,
+  wordSets
+});
+
+export const FETCH_WORDSETS_ERROR = 'FETCH_WORDSETS_ERROR';
+export const fetchWordSetsError = error => ({
+  type: FETCH_WORDSETS_ERROR,
+  error
+});
+
+export const fetchWordSets = () => (dispatch, getState) => {
+	dispatch(fetchWordSetsRequest());
+	const authToken = getState().auth.authToken;
+	return fetch(`${API_BASE_URL}/data/wordSets`, 
+		{
+  		method: 'GET',
+  		headers: {
+			'Authorization': `Bearer ${authToken}`
+		}
+	})
+		.then(res => {
+			if (!res.ok) {
+				return Promise.reject('Something has gone wrong');
+			}
+			return res.json()
+		})
+		.then(wordSets => {
+			dispatch(fetchWordSetsSuccess(wordSets))
+		})
+		.catch(err => 
+			dispatch(fetchWordSetsError(err))
+		)
+}
+
+export const SELECT_WORD_SET = 'SELECT_WORD_SET';
+export const selectWordSet = wordSet => ({
+  type: SELECT_WORD_SET,
+  wordSet
+});
+
 export const FETCH_QUESTION_REQUEST = 'FETCH_QUESTION_REQUEST';
 export const fetchQuestionRequest = () => ({
   type: FETCH_QUESTION_REQUEST
@@ -22,10 +69,11 @@ export const fetchQuestionError = error => ({
   error
 });
 
-export const fetchQuestion = () => (dispatch, getState) => {
+export const fetchQuestion = wordSet => (dispatch, getState) => {
 	dispatch(fetchQuestionRequest());
 	const authToken = getState().auth.authToken;
-	return fetch(`${API_BASE_URL}/user/question?wordSet=Foundation`, 
+    console.log(`${API_BASE_URL}/user/question?wordSet=${wordSet}`);
+    return fetch(`${API_BASE_URL}/user/question?wordSet=${wordSet}`, 
 		{
   		method: 'GET',
   		headers: {
@@ -103,6 +151,11 @@ export const generateQuestionFeedback = (word, definition, correctAnswer, shuffl
 export const TOGGLE_VIEW_EXAMPLE = 'TOGGLE_VIEW_EXAMPLE';
 export const toggleViewExample = () => ({
     type: TOGGLE_VIEW_EXAMPLE
+})
+
+export const NEXT_QUESTION = 'NEXT_QUESTION';
+export const nextQuestion = () => ({
+    type: NEXT_QUESTION
 })
 
 export const RESET_STATE = 'RESET_STATE';
