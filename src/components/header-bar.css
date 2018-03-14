@@ -85,4 +85,15 @@
     .mobile {
         display: none;
     }
+
+    .log-out-button {
+        padding: 10px 20px;
+        margin-right: 15px;
+        font-size: 14px;
+        width: 100px;
+        background-color: #253628;
+        color: #edf1de;
+        font-weight: bold;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
 }
