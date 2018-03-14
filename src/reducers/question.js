@@ -11,7 +11,8 @@ import {
     GENERATE_QUESTION_FEEDBACK,
     TOGGLE_VIEW_EXAMPLE,
     RESET_STATE,
-    TOGGLE_MENU_VISIBLE
+    TOGGLE_MENU_VISIBLE,
+    SELECT_WORD_SET
 } from '../actions/question';
 
 const initialState = {
@@ -56,6 +57,12 @@ export const reducer = (state = initialState, action) => {
 			loading: false,
 			error: action.error
 		})
+    }
+
+    if (action.type === SELECT_WORD_SET) {
+        return Object.assign({}, state, {
+            wordSetChosen: action.name
+        })
     }
 
     else if (action.type === FETCH_QUESTION_REQUEST) {

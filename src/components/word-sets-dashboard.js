@@ -1,9 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
+import { selectWordSet } from '../actions/question';
 import './word-sets-dashboard.css';
 
 export class WordSetsDashboard extends React.Component {
+    selectWordSet(name) {
+        this.props.dispatch(selectWordSet())
+    }
+    
     render() {
 
         let welcomeMessage;
@@ -27,8 +32,8 @@ export class WordSetsDashboard extends React.Component {
                 }
                 
                 return (
-                    <div className="wordSet-container" key={wordSet.id}>
-                        <button className="wordSet-button" value={wordSet.name} onClick={event => console.log(event.target.value)}>{wordSet.name}</button>
+                    <div className="word-set-container" key={wordSet.id}>
+                        <button className="word-set-button" value={wordSet.name} onClick={event => this.selectWordSet(event.target.value)}>{wordSet.name}</button>
                         <div>Progress: {wordSet.mastery}</div>
                     </div>
                 )
@@ -47,7 +52,7 @@ export class WordSetsDashboard extends React.Component {
             newWordSetsMessage = (
                 <h3>Want to Try a New Word Set?</h3>
             )
-            
+
             if (!newWordSets[0]) {
                 newWordSetsMessage = (
                     <div className="hide"></div>
@@ -58,8 +63,8 @@ export class WordSetsDashboard extends React.Component {
             } else {
                 newWordSets = newWordSets.map( wordSet => {
                     return (
-                        <div className="wordSet-container" key={wordSet.id}>
-                            <button className="wordSet-button" value={wordSet.name} onClick={event => console.log(event.target.value)}>{wordSet.name}</button>
+                        <div className="word-set-container" key={wordSet.id}>
+                            <button className="word-set-button" value={wordSet.name} onClick={event => console.log(event.target.value)}>{wordSet.name}</button>
                             {/* <div>{wordSet.description}</div> */}
                         </div>
                     )
@@ -70,7 +75,7 @@ export class WordSetsDashboard extends React.Component {
         }
 
         return (
-            <div className="wordSets">
+            <div className="word-sets">
                 {welcomeMessage}
                 {usersWordSets}
                 {newWordSetsMessage}

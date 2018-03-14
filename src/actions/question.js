@@ -46,6 +46,11 @@ export const fetchWordSets = () => (dispatch, getState) => {
 		)
 }
 
+export const SELECT_WORD_SET = 'SELECT_WORD_SET';
+export const selectWordSet = name => ({
+  type: SELECT_WORD_SET
+});
+
 export const FETCH_QUESTION_REQUEST = 'FETCH_QUESTION_REQUEST';
 export const fetchQuestionRequest = () => ({
   type: FETCH_QUESTION_REQUEST
