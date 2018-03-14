@@ -1,5 +1,10 @@
 import { API_BASE_URL } from '../config'
 
+export const TOGGLE_MENU_VISIBLE = 'TOGGLE_MENU_VISIBLE';
+export const toggleMenuVisible = () => ({
+  type: TOGGLE_MENU_VISIBLE
+});
+
 export const FETCH_QUESTION_REQUEST = 'FETCH_QUESTION_REQUEST';
 export const fetchQuestionRequest = () => ({
   type: FETCH_QUESTION_REQUEST
