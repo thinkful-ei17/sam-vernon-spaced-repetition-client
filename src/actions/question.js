@@ -41,6 +41,49 @@ export const fetchQuestion = () => (dispatch, getState) => {
 		)
 }
 
+export const SEND_QUESTION_RESPONSE_REQUEST = 'SEND_QUESTION_RESPONSE_REQUEST';
+export const sendQuestionResponseRequest = () => ({
+  type: SEND_QUESTION_RESPONSE_REQUEST
+});
+
+export const SEND_QUESTION_RESPONSE_SUCCESS = 'SEND_QUESTION_RESPONSE_SUCCESS';
+export const sendQuestionResponseSuccess = () => ({
+  type: SEND_QUESTION_RESPONSE_SUCCESS
+});
+
+export const SEND_QUESTION_RESPONSE_ERROR = 'SEND_QUESTION_RESPONSE_ERROR';
+export const sendQuestionResponseError = error => ({
+  type: SEND_QUESTION_RESPONSE_ERROR,
+  error
+});
+
+export const sendQuestionResponse = correct => (dispatch, getState) => {
+	dispatch(sendQuestionResponseRequest());
+	const authToken = getState().auth.authToken;
+	return fetch(`${API_BASE_URL}/user/question?wordSet=Foundation`, 
+		{
+  		method: 'POST',
+  		headers: {
+            'Content-Type': 'application/json',
+			'Accept': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+        },
+        body: JSON.stringify({answer: correct})
+	})
+		.then(res => {
+			if (!res.ok) {
+				return Promise.reject('Something has gone wrong');
+			}
+			return res.json()
+		})
+		.then(() => {
+			dispatch(sendQuestionResponseSuccess())
+		})
+		.catch(err => 
+			dispatch(sendQuestionResponseError(err))
+		)
+}
+
 export const GENERATE_QUESTION_FEEDBACK = 'GENERATE_QUESTION_FEEDBACK';
 export const generateQuestionFeedback = (word, definition, correctAnswer, shuffledArray, prompt, correct) => ({
     type: GENERATE_QUESTION_FEEDBACK,

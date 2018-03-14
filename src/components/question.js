@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
-import { generateQuestionFeedback } from '../actions/question';
+import { sendQuestionResponse, generateQuestionFeedback } from '../actions/question';
 import './question.css';
 
 export class Question extends React.Component {
@@ -38,7 +38,7 @@ export class Question extends React.Component {
                 if (answer !== correctAnswer) {
                     correct = false;
                 }
-                
+                this.props.dispatch(sendQuestionResponse(correct));
                 this.props.dispatch(generateQuestionFeedback(word, definition, correctAnswer, shuffledArray, prompt, correct));
             }
 
