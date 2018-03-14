@@ -1,10 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
-import { sendQuestionResponse, generateQuestionFeedback } from '../actions/question';
+import { fetchQuestion, sendQuestionResponse, generateQuestionFeedback } from '../actions/question';
 import './question.css';
 
 export class Question extends React.Component {
+    componentDidMount() {
+        this.props.dispatch(fetchQuestion());
+    }
+    
     shuffle = array => {
         for(let i = 0; i < array.length; i++){
           let randomIndex = this._getRandomInt(array.length - i);

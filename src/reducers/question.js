@@ -1,4 +1,7 @@
 import { 
+    FETCH_WORDSETS_REQUEST,
+    FETCH_WORDSETS_SUCCESS,
+    FETCH_WORDSETS_ERROR,
     FETCH_QUESTION_REQUEST,
     FETCH_QUESTION_SUCCESS,
     FETCH_QUESTION_ERROR,
@@ -12,6 +15,8 @@ import {
 } from '../actions/question';
 
 const initialState = {
+    wordSets: null,
+    wordSetChosen: null,
     menuVisible: false,
     loading: false,
     error: null,
@@ -32,6 +37,27 @@ export const reducer = (state = initialState, action) => {
         })
     }
     
+    else if (action.type === FETCH_WORDSETS_REQUEST) {
+		return Object.assign({}, state, {
+			loading: true,
+		})
+	}
+
+	else if (action.type === FETCH_WORDSETS_SUCCESS) {
+		return Object.assign({}, state, {
+			wordSets: action.wordSets,
+			loading: false,
+			error: null
+		})
+	}
+
+	else if (action.type === FETCH_WORDSETS_ERROR) {
+		return Object.assign({}, state, {
+			loading: false,
+			error: action.error
+		})
+    }
+
     else if (action.type === FETCH_QUESTION_REQUEST) {
 		return Object.assign({}, state, {
 			loading: true,

@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
-import { fetchQuestion } from '../actions/question';
+import { fetchWordSets } from '../actions/question';
+import WordSetsDashboard from './word-sets-dashboard';
 import Question from './question';
 import Feedback from './feedback';
 import Example from './example';
@@ -9,15 +10,19 @@ import './dashboard.css';
 
 export class Dashboard extends React.Component {
     componentDidMount() {
-        this.props.dispatch(fetchQuestion());
+        this.props.dispatch(fetchWordSets);
     }
     
     render() {
-        let content = <Question />;
-        if (this.props.question.correct !== null) {
-            content = <Feedback />
-            if (this.props.question.viewExample) {
-                content = <Example />
+        let content = <WordSetsDashboard />;
+        
+        if (this.props.wordSetChosen !== null) {
+            content = <Question />;
+            if (this.props.question.correct !== null) {
+                content = <Feedback />
+                if (this.props.question.viewExample) {
+                    content = <Example />
+                }
             }
         }
 
