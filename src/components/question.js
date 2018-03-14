@@ -25,41 +25,48 @@ export class Question extends React.Component {
     
     render() {
 
-        const { word, definition, correctAnswer, incorrectAnswers, prompt } = this.props.question;
+        if (this.props.question) {
 
-        let shuffledArray = this.shuffle(incorrectAnswers);
-        shuffledArray = shuffledArray.slice(0,4);
-        shuffledArray[this._getRandomInt(4)] = correctAnswer;
+            const { word, definition, correctAnswer, incorrectAnswers, prompt } = this.props.question;
 
-        const handleResponse = answer => {
-            let correct = true;
-            if (answer !== correctAnswer) {
-                correct = false;
+            let shuffledArray = this.shuffle(incorrectAnswers);
+            shuffledArray = shuffledArray.slice(0,4);
+            shuffledArray[this._getRandomInt(4)] = correctAnswer;
+
+            const handleResponse = answer => {
+                let correct = true;
+                if (answer !== correctAnswer) {
+                    correct = false;
+                }
+                
+                this.props.dispatch(generateQuestionFeedback(word, definition, correctAnswer, shuffledArray, prompt, correct));
             }
-            // ping server Correct or Incorrect
-            this.props.dispatch(generateQuestionFeedback(word, definition, correctAnswer, shuffledArray, prompt, correct));
-        }
-        
-        return (
-            <div className="question">
-                <h2>{word}</h2>
-                <div className="question-options-button-container">
-                    <button className="question-option-button" value={shuffledArray[0]} onClick = { event => handleResponse(event.target.value)}>A. {shuffledArray[0]}</button>
-                    <button className="question-option-button" value={shuffledArray[1]} onClick = { event => handleResponse(event.target.value)}>B. {shuffledArray[1]}</button>
-                    <button className="question-option-button" value={shuffledArray[2]} onClick = { event => handleResponse(event.target.value)}>C. {shuffledArray[2]}</button>
-                    <button className="question-option-button" value={shuffledArray[3]} onClick = { event => handleResponse(event.target.value)}>D. {shuffledArray[3]}</button>
+
+            return (
+                <div className="question">
+                    <h2>{word}</h2>
+                    <div className="question-options-button-container">
+                        <button className="question-option-button" value={shuffledArray[0]} onClick = { event => handleResponse(event.target.value)}>A. {shuffledArray[0]}</button>
+                        <button className="question-option-button" value={shuffledArray[1]} onClick = { event => handleResponse(event.target.value)}>B. {shuffledArray[1]}</button>
+                        <button className="question-option-button" value={shuffledArray[2]} onClick = { event => handleResponse(event.target.value)}>C. {shuffledArray[2]}</button>
+                        <button className="question-option-button" value={shuffledArray[3]} onClick = { event => handleResponse(event.target.value)}>D. {shuffledArray[3]}</button>
+                    </div>
                 </div>
-            </div>
+            )
+        }
+        return (
+            <div>Loading...</div>
         )
     }
 }
 
 const mapStateToProps = state => {
     const {currentUser} = state.auth;
+    console.log(state.question);
     return {
         username: state.auth.currentUser.username,
         name: `${currentUser.firstName} ${currentUser.lastName}`,
-        question: state.auth.currentUser.wordSets[0].data.head.value
+        question: state.question.question
     };
 };
 
