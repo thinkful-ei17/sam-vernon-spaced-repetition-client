@@ -50,8 +50,10 @@ export class Feedback extends React.Component {
                     <div className={optionFeedback[2]}>C. {shuffledArray[2]}</div>
                     <div className={optionFeedback[3]}>D. {shuffledArray[3]}</div>
                 </div>
-                <button className="feedback-buttons" onClick={() => this.toggleViewExample()}>Example</button>
-                <button className="feedback-buttons" onClick={() => this.loadNextQuestion()}>Next Word</button>
+                <div className="feedback-buttons-container">
+                    <button className="feedback-button" onClick={() => this.toggleViewExample()}>Example</button>
+                    <button className="feedback-button" onClick={() => this.loadNextQuestion()}>Next Word</button>
+                </div>
             </div>
         )
     }

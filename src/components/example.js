@@ -23,8 +23,10 @@ export class Example extends React.Component {
                 <div className="example-sentence-container">    
                     <h3 className="example-sentence">{prompt}</h3>
                 </div>
-                <button className="feedback-buttons" onClick={() => this.toggleViewExample()}>Back</button>
-                <button className="feedback-buttons" onClick={() => this.loadNextQuestion()}>Next Word</button>
+                <div className="feedback-buttons-container">
+                    <button className="feedback-button" onClick={() => this.toggleViewExample()}>Back</button>
+                    <button className="feedback-button" onClick={() => this.loadNextQuestion()}>Next Word</button>
+                </div>
             </div>
         )
     }

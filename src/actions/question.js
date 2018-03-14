@@ -60,7 +60,7 @@ export const sendQuestionResponseError = error => ({
 export const sendQuestionResponse = correct => (dispatch, getState) => {
 	dispatch(sendQuestionResponseRequest());
 	const authToken = getState().auth.authToken;
-	return fetch(`${API_BASE_URL}/user/question?wordSet=Foundation`, 
+    return fetch(`${API_BASE_URL}/user/response?wordSet=Foundation`, 
 		{
   		method: 'POST',
   		headers: {
@@ -68,7 +68,7 @@ export const sendQuestionResponse = correct => (dispatch, getState) => {
 			'Accept': 'application/json',
             'Authorization': `Bearer ${authToken}`
         },
-        body: JSON.stringify({answer: correct})
+        body: {'answer': true}
 	})
 		.then(res => {
 			if (!res.ok) {

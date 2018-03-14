@@ -48,3 +48,19 @@
 .wrong-answer-option {
     text-decoration: line-through;
 }
+
+.feedback-buttons-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.feedback-button {
+    padding: 10px 20px;
+    margin-top: 15px;
+    font-size: 18px;
+    width: 40%;
+    background-color: #253628;
+    color: #edf1de;
+    font-weight: bold;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
