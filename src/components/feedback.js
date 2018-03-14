@@ -1,13 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
-import { resetState, fetchQuestion } from '../actions/question';
+import { toggleViewExample, resetState, fetchQuestion } from '../actions/question';
 import './feedback.css';
 
 export class Feedback extends React.Component {
     loadNextQuestion() {
         this.props.dispatch(resetState());
         this.props.dispatch(fetchQuestion());   
+    }
+
+    toggleViewExample() {
+        this.props.dispatch(toggleViewExample());
     }
 
     render() {
@@ -46,7 +50,8 @@ export class Feedback extends React.Component {
                     <div className={optionFeedback[2]}>C. {shuffledArray[2]}</div>
                     <div className={optionFeedback[3]}>D. {shuffledArray[3]}</div>
                 </div>
-                <button onClick={() => this.loadNextQuestion()}>Next Word</button>
+                <button className="feedback-buttons" onClick={() => this.toggleViewExample()}>Example</button>
+                <button className="feedback-buttons" onClick={() => this.loadNextQuestion()}>Next Word</button>
             </div>
         )
     }

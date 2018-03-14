@@ -95,6 +95,11 @@ export const generateQuestionFeedback = (word, definition, correctAnswer, shuffl
     correct
 })
 
+export const TOGGLE_VIEW_EXAMPLE = 'TOGGLE_VIEW_EXAMPLE';
+export const toggleViewExample = () => ({
+    type: TOGGLE_VIEW_EXAMPLE
+})
+
 export const RESET_STATE = 'RESET_STATE';
 export const resetState = () => ({
     type: RESET_STATE

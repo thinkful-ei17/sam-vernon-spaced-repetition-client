@@ -4,6 +4,7 @@ import requiresLogin from './requires-login';
 import { fetchQuestion } from '../actions/question';
 import Question from './question';
 import Feedback from './feedback';
+import Example from './example';
 import './dashboard.css';
 
 export class Dashboard extends React.Component {
@@ -15,6 +16,9 @@ export class Dashboard extends React.Component {
         let content = <Question />;
         if (this.props.question.correct !== null) {
             content = <Feedback />
+            if (this.props.question.viewExample) {
+                content = <Example />
+            }
         }
 
         return (

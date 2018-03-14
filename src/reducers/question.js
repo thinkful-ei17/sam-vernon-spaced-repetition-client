@@ -6,7 +6,8 @@ import {
     SEND_QUESTION_RESPONSE_SUCCESS,
     SEND_QUESTION_RESPONSE_ERROR,
     GENERATE_QUESTION_FEEDBACK,
-    RESET_STATE 
+    TOGGLE_VIEW_EXAMPLE,
+    RESET_STATE
 } from '../actions/question';
 
 const initialState = {
@@ -18,7 +19,8 @@ const initialState = {
     correctAnswer: null,
     shuffledArray: null,
     prompt: null,
-    correct: null
+    correct: null,
+    viewExample: false
 }
 
 export const reducer = (state = initialState, action) => {
@@ -73,6 +75,12 @@ export const reducer = (state = initialState, action) => {
             correct: action.correct
           })
     }
+    
+    else if (action.type === TOGGLE_VIEW_EXAMPLE) {
+        return Object.assign({}, state, {
+            viewExample: !state.viewExample
+        })
+    }
 
     else if (action.type === RESET_STATE) {
         return Object.assign({}, state, {
@@ -82,7 +90,8 @@ export const reducer = (state = initialState, action) => {
           correctAnswer: null,
           shuffledArray: null,
           prompt: null,
-          correct: null
+          correct: null,
+          viewExample: false
         })
     }
 
