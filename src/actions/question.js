@@ -72,7 +72,6 @@ export const fetchQuestionError = error => ({
 export const fetchQuestion = wordSet => (dispatch, getState) => {
 	dispatch(fetchQuestionRequest());
 	const authToken = getState().auth.authToken;
-    console.log(`${API_BASE_URL}/user/question?wordSet=${wordSet}`);
     return fetch(`${API_BASE_URL}/user/question?wordSet=${wordSet}`, 
 		{
   		method: 'GET',
@@ -110,10 +109,10 @@ export const sendQuestionResponseError = error => ({
   error
 });
 
-export const sendQuestionResponse = correct => (dispatch, getState) => {
+export const sendQuestionResponse = (correct, wordSet) => (dispatch, getState) => {
 	dispatch(sendQuestionResponseRequest());
 	const authToken = getState().auth.authToken;
-    return fetch(`${API_BASE_URL}/user/response?wordSet=Foundation`, 
+    return fetch(`${API_BASE_URL}/user/response?wordSet=${wordSet}`, 
 		{
   		method: 'POST',
   		headers: {

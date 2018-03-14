@@ -42,7 +42,7 @@ export class Question extends React.Component {
                 if (answer !== correctAnswer) {
                     correct = false;
                 }
-                this.props.dispatch(sendQuestionResponse(correct));
+                this.props.dispatch(sendQuestionResponse(correct, this.props.wordSet));
                 this.props.dispatch(generateQuestionFeedback(word, definition, correctAnswer, shuffledArray, prompt, correct));
             }
 
