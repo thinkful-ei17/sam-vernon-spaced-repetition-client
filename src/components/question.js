@@ -59,7 +59,7 @@ export class Question extends React.Component {
             )
         }
         return (
-            <div>Loading...</div>
+            <div className="loading">Loading...</div>
         )
     }
 }
