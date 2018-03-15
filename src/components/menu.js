@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { CSSTransition } from 'react-css-transition';
 import { clearAuth } from '../actions/auth';
 import { toggleMenuVisible, resetState } from '../actions/question';
 import { clearAuthToken } from '../local-storage';
@@ -51,9 +50,7 @@ export class Menu extends React.Component {
         
         return (
             <div className="menu">
-                <CSSTransition>
-                    {menu}
-                </CSSTransition>
+                {menu}
             </div>
         )
     }
