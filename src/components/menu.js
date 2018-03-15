@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { clearAuth } from '../actions/auth';
-import { resetState } from '../actions/question';
+import { toggleMenuVisible, resetState } from '../actions/question';
 import { clearAuthToken } from '../local-storage';
 import './menu.css';
 
@@ -16,16 +16,16 @@ export class Menu extends React.Component {
     render() {
         let menu = (
             <div className="menu-container">
-                <Link to="/" className="menu-link">
+                <Link to="/" className="menu-link" onClick={() => this.props.dispatch(toggleMenuVisible())}>
                     <h2 className="menu-item">Log In</h2>
                 </Link>
-                <Link to="/faqs" className="menu-link">
+                <Link to="/faqs" className="menu-link" onClick={() => this.props.dispatch(toggleMenuVisible())}>
                     <h2 className="menu-item">FAQs</h2>
                 </Link>
-                <Link to="/about" className="menu-link">
+                <Link to="/about" className="menu-link" onClick={() => this.props.dispatch(toggleMenuVisible())}>
                     <h2 className="menu-item">About</h2>
                 </Link>
-                <Link to="/register" className="menu-link">
+                <Link to="/register" className="menu-link" onClick={() => this.props.dispatch(toggleMenuVisible())}>
                     <h2 className="menu-item">Register</h2>
                 </Link>
             </div>
@@ -33,9 +33,9 @@ export class Menu extends React.Component {
 
         if (this.props.loggedIn) {
             menu = (
-                <div>
-                    <div onClick={() => this.props.dispatch(resetState())}>Change Word Sets</div>
-                    <div onClick={() => this.logOut()}>Log Out</div>
+                <div className="menu-container">
+                    <div className="menu-item" onClick={() => this.props.dispatch(resetState())}>Change Word Sets</div>
+                    <div className="menu-item" onClick={() => this.logOut()}>Log Out</div>
                 </div>
             )
         }

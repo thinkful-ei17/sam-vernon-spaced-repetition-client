@@ -1,5 +1,5 @@
 .menu {
-    margin-top: 56px;
+    margin-top: 57px;
 }
 
 .menu-container {
@@ -8,11 +8,13 @@
 
 .menu-link {
     text-decoration: none;
-    color: #edf1de;
 }
 
 .menu-item {
+    color: #edf1de;
     margin: 0px;
-    padding: 5px;
-    border-top: 2px solid #edf1de;
+    padding: 5px 15px;
+    border-top: 1px solid #edf1de;
+    font-weight: normal;
+    font-size: 20px;
 }
