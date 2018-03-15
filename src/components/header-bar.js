@@ -47,20 +47,17 @@ export class HeaderBar extends React.Component {
             </div>
         );
 
-        if (this.props.menuVisible) {
-            hamburgerIcon = (
-                <div className="hamburger-icon mobile" onClick={() => this.toggleMenuVisible()}>
-                    <span className="hamburger-top-stripe hamburger-top-open hamburger"></span>
-                    <span className="hamburger-middle-stripe hamburger-middle-open hamburger"></span>
-                    <span className="hamburger-bottom-stripe hamburger-bottom-open hamburger"></span>
-                </div>
-            );
-        }
-
         if (this.props.loggedIn) {
             logInLogOut = (
                 <button className="desktop log-out-button" onClick={() => this.logOut()}>Log out</button>
             );
+            hamburgerIcon = (
+                <div className="hamburger-icon" onClick={() => this.toggleMenuVisible()}>
+                    <span className="hamburger-top-stripe hamburger"></span>
+                    <span className="hamburger-middle-stripe hamburger"></span>
+                    <span className="hamburger-bottom-stripe hamburger"></span>
+                </div>
+            )
             faqs = (
                 <div></div>
             );
@@ -72,10 +69,20 @@ export class HeaderBar extends React.Component {
             );
         }
 
+        if (this.props.menuVisible) {
+            hamburgerIcon = (
+                <div className="hamburger-icon" onClick={() => this.toggleMenuVisible()}>
+                    <span className="hamburger-top-stripe hamburger-top-open hamburger"></span>
+                    <span className="hamburger-middle-stripe hamburger-middle-open hamburger"></span>
+                    <span className="hamburger-bottom-stripe hamburger-bottom-open hamburger"></span>
+                </div>
+            );
+        }
+
         return (
             <div className="header-bar">
                 <Link to="/" className="header-link">
-                    <h1 className="header-item">SATutor</h1>
+                    <h1 className="header-item" onClick={() => this.props.dispatch(resetState())}>SATutor</h1>
                 </Link>
                 {faqs}
                 {about}
