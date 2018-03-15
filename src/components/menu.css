@@ -1,5 +1,11 @@
+/* .menu-start {
+    top: -100px;
+} */
+
 .menu {
     margin-top: 57px;
+    /* transform: translateY(57px);
+    transition: .5s ease-in-out; */
 }
 
 .menu-container {

@@ -49,7 +49,7 @@ export class Menu extends React.Component {
         }
         
         return (
-            <div className="menu">
+            <div className="menu-start menu">
                 {menu}
             </div>
         )

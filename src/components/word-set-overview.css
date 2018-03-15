@@ -1,0 +1,15 @@
+.word-set-overview {
+    margin: 10px 0px 0px 15px;
+    background: #f4f7f8;
+    color: #212121;
+    padding: 15px;
+    width: max-content;
+    border-radius: 8px;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+.word-set-header {
+    margin: 2px 10px 0px 15px;
+    font-weight: bold;
+}

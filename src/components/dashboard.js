@@ -6,6 +6,7 @@ import WordSetsDashboard from './word-sets-dashboard';
 import Question from './question';
 import Feedback from './feedback';
 import Example from './example';
+import WordSetOverview from './word-set-overview';
 
 export class Dashboard extends React.Component {
     componentDidMount() {
@@ -16,11 +17,26 @@ export class Dashboard extends React.Component {
         let content = <WordSetsDashboard />;
         
         if (this.props.question.wordSetChosen !== null) {
-            content = <Question />;
+            content = (
+                <div>
+                    <WordSetOverview />
+                    <Question />
+                </div>
+            );
             if (this.props.question.correct !== null) {
-                content = <Feedback />
+                content = (
+                    <div>
+                        <WordSetOverview />
+                        <Feedback />
+                    </div>
+                );
                 if (this.props.question.viewExample) {
-                    content = <Example />
+                    content = (
+                        <div>
+                            <WordSetOverview />
+                            <Example />
+                        </div>
+                    );
                 }
             }
         }
