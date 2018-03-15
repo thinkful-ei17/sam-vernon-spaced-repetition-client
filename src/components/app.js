@@ -43,21 +43,25 @@ export class App extends React.Component {
     }
 
     render() {
+        let appContent = "app-content";
         let menu;
         
         if (this.props.menuVisible) {
-            menu = <Menu />
+            menu = <Menu />;
+            appContent = "app-content-with-menu"
         }
 
         return (
             <div className="app">
                 <HeaderBar />
                 {menu}
-                <Route exact path="/" component={LandingPage} />
-                <Route exact path="/dashboard" component={Dashboard} />
-                <Route exact path="/register" component={RegistrationPage} />
-                <Route exact path="/about" component={About} />
-                <Route exact path="/faqs" component={FAQs} />
+                <div className={appContent}>
+                    <Route exact path="/" component={LandingPage} />
+                    <Route exact path="/dashboard" component={Dashboard} />
+                    <Route exact path="/register" component={RegistrationPage} />
+                    <Route exact path="/about" component={About} />
+                    <Route exact path="/faqs" component={FAQs} />
+                </div>
             </div>
         );
     }

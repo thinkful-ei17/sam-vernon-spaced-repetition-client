@@ -2,3 +2,7 @@ body {
     background-color: #edf1de;
     color: #212121;
 }
+
+.app-content {
+    margin-top: 80px;
+}

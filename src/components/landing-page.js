@@ -11,14 +11,8 @@ export function LandingPage(props) {
         return <Redirect to="/dashboard" />;
     }
 
-    let landingPageStyling = "landing-page";
-
-    if (props.menuVisible) {
-        landingPageStyling = "landing-page-with-menu";
-    }
-
     return (
-        <div className={landingPageStyling}>
+        <div className="landing-page">
             <h2>Welcome to SATutor</h2>
             <LoginForm />
             <p>
@@ -29,8 +23,7 @@ export function LandingPage(props) {
 }
 
 const mapStateToProps = state => ({
-    loggedIn: state.auth.currentUser !== null,
-    menuVisible: state.question.menuVisible
+    loggedIn: state.auth.currentUser !== null
 });
 
 export default connect(mapStateToProps)(LandingPage);
