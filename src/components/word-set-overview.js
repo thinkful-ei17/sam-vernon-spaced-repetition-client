@@ -3,14 +3,13 @@ import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import './word-set-overview.css';
 
-export function WordSetOverview(props) {
+export function WordSetOverview(props) {    
     let progress;
-    for (let i=0; i<props.wordSets.length; i++) {
-        if (props.wordSets[i].name === props.wordSet) {
-            progress = `Progress: ${props.wordSets[i].mastery}%`;
-        }
+
+    if (props.mastery) {
+        progress = `Progress: ${props.mastery}%`;
     }
-    
+
     return (
         <div className="word-set-overview">
             Word Set: {props.wordSet}
@@ -25,7 +24,7 @@ const mapStateToProps = state => {
     return {
         username: state.auth.currentUser.username,
         name: `${currentUser.firstName} ${currentUser.lastName}`,
-        wordSets: state.auth.currentUser.wordSets,
+        mastery: state.question.mastery,
         wordSet: state.question.wordSetChosen
     };
 };

@@ -18,7 +18,7 @@ export class WordSetsDashboard extends React.Component {
             <div className="loading">Loading...</div>
         )
 
-        if (this.props.wordSets !== null) {
+        if (this.props.wordSets) {
 
             usersWordSets = this.props.usersWordSets;
             newWordSets = this.props.wordSets;
@@ -30,11 +30,11 @@ export class WordSetsDashboard extends React.Component {
                         break;
                     }
                 }
-
+    
                 let style = ({
-                    width: `${wordSet.mastery}`
+                    width: `${wordSet.mastery}%`
                 })
-                
+                    
                 return (
                     <div className="word-set-container" key={wordSet.id}>
                         <button className="word-set-button" value={wordSet.name} onClick={event => this.selectWordSet(event.target.value)}>{wordSet.name}</button>
@@ -45,40 +45,29 @@ export class WordSetsDashboard extends React.Component {
                     </div>
                 )
             });
+    
+            welcomeMessage = <h2>Welcome to SATutor!</h2>;
 
-            
-            if (usersWordSets !== null) {
-                welcomeMessage = (
-                    <div>
-                        <h2>Welcome Back to SATutor!</h2>
-                        <h3>Returned to Master a Word Set?</h3>
+            newWordSetsMessage = <h3>Want to Try a New Word Set?</h3>;
+
+        }
+
+        if (!newWordSets[0]) {
+            newWordSetsMessage = (
+                <div className="hide"></div>
+            )
+            newWordSets = (
+                <div className="hide"></div>
+            )
+        } else {
+            newWordSets = newWordSets.map( wordSet => {
+                return (
+                    <div className="word-set-container" key={wordSet.id}>
+                        <button className="word-set-button" value={wordSet.name} onClick={event => this.selectWordSet(event.target.value)}>{wordSet.name}</button>
+                        {/* <div>{wordSet.description}</div> */}
                     </div>
                 )
-            }
-
-            newWordSetsMessage = (
-                <h3>Want to Try a New Word Set?</h3>
-            )
-
-            if (!newWordSets[0]) {
-                newWordSetsMessage = (
-                    <div className="hide"></div>
-                )
-                newWordSets = (
-                    <div className="hide"></div>
-                )
-            } else {
-                newWordSets = newWordSets.map( wordSet => {
-                    return (
-                        <div className="word-set-container" key={wordSet.id}>
-                            <button className="word-set-button" value={wordSet.name} onClick={event => this.selectWordSet(event.target.value)}>{wordSet.name}</button>
-                            {/* <div>{wordSet.description}</div> */}
-                        </div>
-                    )
-                });
-            }
-
-            
+            });
         }
 
         return (

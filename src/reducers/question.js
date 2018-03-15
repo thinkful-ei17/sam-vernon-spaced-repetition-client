@@ -2,6 +2,9 @@ import {
     FETCH_WORDSETS_REQUEST,
     FETCH_WORDSETS_SUCCESS,
     FETCH_WORDSETS_ERROR,
+    FETCH_MASTERY_REQUEST,
+    FETCH_MASTERY_SUCCESS,
+    FETCH_MASTERY_ERROR,
     FETCH_QUESTION_REQUEST,
     FETCH_QUESTION_SUCCESS,
     FETCH_QUESTION_ERROR,
@@ -29,7 +32,8 @@ const initialState = {
     shuffledArray: null,
     prompt: null,
     correct: null,
-    viewExample: false
+    viewExample: false,
+    mastery: null
 }
 
 export const reducer = (state = initialState, action) => {
@@ -60,10 +64,31 @@ export const reducer = (state = initialState, action) => {
 		})
     }
 
-    if (action.type === SELECT_WORD_SET) {
+    else if (action.type === SELECT_WORD_SET) {
         return Object.assign({}, state, {
             wordSetChosen: action.wordSet
         })
+    }
+
+    else if (action.type === FETCH_MASTERY_REQUEST) {
+		return Object.assign({}, state, {
+			loading: true,
+		})
+	}
+
+	else if (action.type === FETCH_MASTERY_SUCCESS) {
+		return Object.assign({}, state, {
+			mastery: action.mastery,
+			loading: false,
+			error: null
+		})
+	}
+
+	else if (action.type === FETCH_MASTERY_ERROR) {
+		return Object.assign({}, state, {
+			loading: false,
+			error: action.error
+		})
     }
 
     else if (action.type === FETCH_QUESTION_REQUEST) {

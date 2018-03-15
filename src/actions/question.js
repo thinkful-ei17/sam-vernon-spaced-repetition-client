@@ -77,8 +77,8 @@ export const fetchQuestion = wordSet => (dispatch, getState) => {
   		method: 'GET',
   		headers: {
 			'Authorization': `Bearer ${authToken}`
-		}
-	})
+			}
+		})
 		.then(res => {
 			if (!res.ok) {
 				return Promise.reject('Something has gone wrong');
@@ -93,6 +93,42 @@ export const fetchQuestion = wordSet => (dispatch, getState) => {
 			dispatch(fetchQuestionError(err))
 		)
 }
+
+export const FETCH_MASTERY_REQUEST = 'FETCH_MASTERY_REQUEST';
+export const fetchMasteryRequest = () => ({
+  type: FETCH_MASTERY_REQUEST
+});
+
+export const FETCH_MASTERY_SUCCESS = 'FETCH_MASTERY_SUCCESS';
+export const fetchMasterySuccess = wordSet => ({
+  type: FETCH_MASTERY_SUCCESS,
+  mastery: wordSet.mastery
+});
+
+export const FETCH_MASTERY_ERROR = 'FETCH_MASTERY_ERROR';
+export const fetchMasteryError = error => ({
+  type: FETCH_MASTERY_ERROR,
+  error
+});
+
+export const fetchMastery = wordSet => (dispatch, getState) => {
+    dispatch(fetchMasteryRequest());
+	const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/user/wordSet?wordSet=${wordSet}`, {
+        method: 'GET',
+        headers: {
+            'content-type': 'application/json',
+			'Authorization': `Bearer ${authToken}`
+		}
+    })
+        .then(res => res.json())
+        .then(wordSet => {
+            dispatch(fetchMasterySuccess(wordSet))
+		})
+		.catch(err => 
+			dispatch(fetchMasteryError(err))
+		)
+};
 
 export const SEND_QUESTION_RESPONSE_REQUEST = 'SEND_QUESTION_RESPONSE_REQUEST';
 export const sendQuestionResponseRequest = () => ({

@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
-import { fetchQuestion, sendQuestionResponse, generateQuestionFeedback } from '../actions/question';
+import { fetchMastery, fetchQuestion, sendQuestionResponse, generateQuestionFeedback } from '../actions/question';
 import './question.css';
 
 export class Question extends React.Component {
     componentDidMount() {
+        this.props.dispatch(fetchMastery(this.props.wordSet));
         this.props.dispatch(fetchQuestion(this.props.wordSet));
     }
     
