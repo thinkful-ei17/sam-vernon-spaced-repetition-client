@@ -6,7 +6,8 @@ import './word-set-overview.css';
 export function WordSetOverview(props) {    
     let progress;
 
-    if (props.mastery) {
+    console.log(props.mastery);
+    if (props.mastery > -1) {
         progress = `Progress: ${props.mastery}%`;
     }
 

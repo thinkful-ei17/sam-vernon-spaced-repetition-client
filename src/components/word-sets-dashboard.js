@@ -49,7 +49,6 @@ export class WordSetsDashboard extends React.Component {
             welcomeMessage = <h2>Welcome to SATutor!</h2>;
 
             newWordSetsMessage = <h3>Want to Try a New Word Set?</h3>;
-
         }
 
         if (!newWordSets[0]) {

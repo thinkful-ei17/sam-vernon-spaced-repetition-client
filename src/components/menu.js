@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { clearAuth } from '../actions/auth';
+import { updateUserWordSets } from '../actions/users';
 import { toggleMenuVisible, resetState } from '../actions/question';
 import { clearAuthToken } from '../local-storage';
 import './menu.css';
@@ -11,6 +12,11 @@ export class Menu extends React.Component {
         this.props.dispatch(resetState());
         this.props.dispatch(clearAuth());
         clearAuthToken();
+    }
+
+    changeWordSets() {
+        this.props.dispatch(updateUserWordSets());
+        this.props.dispatch(resetState())
     }
 
     render() {
@@ -41,7 +47,7 @@ export class Menu extends React.Component {
             if (this.props.wordSet) {
                     menu = (
                         <div className="menu-container">
-                            <div className="menu-item" onClick={() => this.props.dispatch(resetState())}>Change Word Sets</div>
+                            <div className="menu-item" onClick={() => this.changeWordSets()}>Change Word Sets</div>
                             <div className="menu-item" onClick={() => this.logOut()}>Log Out</div>
                         </div>
                     )
