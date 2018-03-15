@@ -6,7 +6,6 @@ import WordSetsDashboard from './word-sets-dashboard';
 import Question from './question';
 import Feedback from './feedback';
 import Example from './example';
-import './dashboard.css';
 
 export class Dashboard extends React.Component {
     componentDidMount() {
@@ -26,14 +25,8 @@ export class Dashboard extends React.Component {
             }
         }
 
-        let dashboardStyling = "dashboard";
-
-        if (this.props.menuVisible) {
-            dashboardStyling = "dashboard-with-menu";
-        }
-
         return (
-            <div className={dashboardStyling}>
+            <div className="dashboard">
                 {content}
             </div>
         );
