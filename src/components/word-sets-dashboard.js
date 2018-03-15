@@ -15,7 +15,7 @@ export class WordSetsDashboard extends React.Component {
         let newWordSetsMessage;
         let usersWordSets;
         let newWordSets = (
-            <div>Loading...</div>
+            <div className="loading">Loading...</div>
         )
 
         if (this.props.wordSets !== null) {
@@ -30,11 +30,18 @@ export class WordSetsDashboard extends React.Component {
                         break;
                     }
                 }
+
+                let style = ({
+                    width: `${wordSet.mastery}`
+                })
                 
                 return (
                     <div className="word-set-container" key={wordSet.id}>
                         <button className="word-set-button" value={wordSet.name} onClick={event => this.selectWordSet(event.target.value)}>{wordSet.name}</button>
-                        <div>Progress: {wordSet.mastery}</div>
+                        <div className="progress-meter">
+                            <div className="current-progress" style={style}></div>
+                        </div>
+                        <div>Progress: {wordSet.mastery}%</div>
                     </div>
                 )
             });
