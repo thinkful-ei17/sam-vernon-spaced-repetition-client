@@ -18,7 +18,7 @@ export class HeaderBar extends React.Component {
     }
 
     render() {
-        let logInLogOut=(
+        let logIn = (
             <Link to="/" className="header-link desktop">
                 <h2 className="header-item">Log In</h2>
             </Link>
@@ -48,9 +48,6 @@ export class HeaderBar extends React.Component {
         );
 
         if (this.props.loggedIn) {
-            logInLogOut = (
-                <button className="desktop log-out-button" onClick={() => this.logOut()}>Log out</button>
-            );
             hamburgerIcon = (
                 <div className="hamburger-icon" onClick={() => this.toggleMenuVisible()}>
                     <span className="hamburger-top-stripe hamburger"></span>
@@ -67,6 +64,9 @@ export class HeaderBar extends React.Component {
             register = (
                 <div></div>
             );
+            logIn = (
+                <div></div>
+            )
         }
 
         if (this.props.menuVisible) {
@@ -87,7 +87,7 @@ export class HeaderBar extends React.Component {
                 {faqs}
                 {about}
                 {register}
-                {logInLogOut}
+                {logIn}
 
                 {hamburgerIcon}                
             </div>
