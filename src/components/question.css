@@ -5,6 +5,7 @@
 .question-options-button-container {
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .question-option-button {
@@ -15,4 +16,5 @@
     font-size: 24px;
     margin: 10px auto;
     padding: 20px;
+    cursor: pointer;
 }

@@ -34,10 +34,18 @@ export class Menu extends React.Component {
         if (this.props.loggedIn) {
             menu = (
                 <div className="menu-container">
-                    <div className="menu-item" onClick={() => this.props.dispatch(resetState())}>Change Word Sets</div>
                     <div className="menu-item" onClick={() => this.logOut()}>Log Out</div>
                 </div>
             )
+
+            if (this.props.wordSet) {
+                    menu = (
+                        <div className="menu-container">
+                            <div className="menu-item" onClick={() => this.props.dispatch(resetState())}>Change Word Sets</div>
+                            <div className="menu-item" onClick={() => this.logOut()}>Log Out</div>
+                        </div>
+                    )
+            }
         }
         
         return (
