@@ -15,7 +15,7 @@ export class Menu extends React.Component {
 
     render() {
         let menu = (
-            <div>
+            <div className="menu-container">
                 <Link to="/" className="menu-link">
                     <h2 className="menu-item">Log In</h2>
                 </Link>

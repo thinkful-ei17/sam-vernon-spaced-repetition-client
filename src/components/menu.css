@@ -1,3 +1,18 @@
 .menu {
-    margin-top: 57px;
+    margin-top: 56px;
+}
+
+.menu-container {
+    background-color: #8AA989;
+}
+
+.menu-link {
+    text-decoration: none;
+    color: #edf1de;
+}
+
+.menu-item {
+    margin: 0px;
+    padding: 5px;
+    border-top: 2px solid #edf1de;
 }

@@ -43,7 +43,11 @@ export class App extends React.Component {
     }
 
     render() {
-        let menu = <Menu />
+        let menu;
+        
+        if (this.props.menuVisible) {
+            menu = <Menu />
+        }
 
         return (
             <div className="app">
@@ -61,7 +65,8 @@ export class App extends React.Component {
 
 const mapStateToProps = state => ({
     hasAuthToken: state.auth.authToken !== null,
-    loggedIn: state.auth.currentUser !== null
+    loggedIn: state.auth.currentUser !== null,
+    menuVisible: state.question.menuVisible
 });
 
 // Deal with update blocking - https://reacttraining.com/react-router/web/guides/dealing-with-update-blocking
