@@ -83,6 +83,7 @@ export const fetchQuestion = wordSet => (dispatch, getState) => {
 			if (!res.ok) {
 				return Promise.reject('Something has gone wrong');
 			}
+			
 			return res.json()
 		})
 		.then(question => {
@@ -116,11 +117,12 @@ export const sendQuestionResponse = (correct, wordSet) => (dispatch, getState) =
 		{
   		method: 'POST',
   		headers: {
-            'Content-Type': 'application/json',
-			'Accept': 'application/json',
-            'Authorization': `Bearer ${authToken}`
-        },
-        body: {'answer': true}
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`
+      },
+      body: JSON.stringify({
+				'answer': correct
+			})
 	})
 		.then(res => {
 			if (!res.ok) {
