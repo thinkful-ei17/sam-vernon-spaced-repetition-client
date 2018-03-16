@@ -11,6 +11,10 @@ export function WordSetOverview(props) {
         progress = `Progress: ${props.mastery}%`;
     }
 
+    if (props.mastery === null) {
+        progress = 'Progress: 0%';
+    }
+
     return (
         <div className="word-set-overview">
             Word Set: {props.wordSet}
