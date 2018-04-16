@@ -7,7 +7,7 @@ export function WordSetOverview(props) {
     let progress;
 
     console.log(props.mastery);
-    if (props.mastery) {
+    if (props.mastery >= 0) {
         progress = `Progress: ${props.mastery}%`;
     }
 
