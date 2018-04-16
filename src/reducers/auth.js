@@ -6,12 +6,6 @@ import {
     AUTH_ERROR
 } from '../actions/auth';
 
-import {
-    UPDATE_USER_WORD_SETS_ERROR,
-    UPDATE_USER_WORD_SETS_SUCCESS,
-    UPDATE_USER_WORD_SETS_REQUEST
-} from '../actions/users';
-
 const initialState = {
     authToken: null,
     currentUser: null,
@@ -19,7 +13,7 @@ const initialState = {
     error: null
 };
 
-export default function reducer(state = initialState, action) {
+export const reducer = (state = initialState, action) => {
     if (action.type === SET_AUTH_TOKEN) {
         return Object.assign({}, state, {
             authToken: action.authToken
@@ -44,21 +38,7 @@ export default function reducer(state = initialState, action) {
             loading: false,
             error: action.error
         });
-    } else if (action.type === UPDATE_USER_WORD_SETS_REQUEST) {
-        return Object.assign({}, state, {
-            loading: true,
-            error: null
-        });
-    } else if (action.type === UPDATE_USER_WORD_SETS_SUCCESS) {
-        return Object.assign({}, state, {
-            loading: false,
-            currentUser: {...state.currentUser, wordSets: action.wordSets}
-        });
-    } else if (action.type === UPDATE_USER_WORD_SETS_ERROR) {
-        return Object.assign({}, state, {
-            loading: false,
-            error: action.error
-        });
-    } 
+    }
+    
     return state;
 }

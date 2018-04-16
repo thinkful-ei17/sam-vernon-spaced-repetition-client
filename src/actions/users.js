@@ -61,7 +61,6 @@ export const updateUserWordSets = () => (dispatch, getState) => {
 			return res.json()
 		})
 		.then(wordSets => {
-            console.log(wordSets);
 			dispatch(updateUserWordSetsSuccess(wordSets))
 		})
 		.catch(err => 

@@ -41,98 +41,70 @@ export const reducer = (state = initialState, action) => {
         return Object.assign({}, state, {
             menuVisible: !state.menuVisible
         })
-    }
-    
-    else if (action.type === FETCH_WORDSETS_REQUEST) {
+    } else if (action.type === FETCH_WORDSETS_REQUEST) {
 		return Object.assign({}, state, {
 			loading: true,
 		})
-	}
-
-	else if (action.type === FETCH_WORDSETS_SUCCESS) {
+	} else if (action.type === FETCH_WORDSETS_SUCCESS) {
 		return Object.assign({}, state, {
 			wordSets: action.wordSets,
 			loading: false,
 			error: null
 		})
-	}
-
-	else if (action.type === FETCH_WORDSETS_ERROR) {
+	} else if (action.type === FETCH_WORDSETS_ERROR) {
 		return Object.assign({}, state, {
 			loading: false,
 			error: action.error
 		})
-    }
-
-    else if (action.type === SELECT_WORD_SET) {
+    } else if (action.type === SELECT_WORD_SET) {
         return Object.assign({}, state, {
             wordSetChosen: action.wordSet
         })
-    }
-
-    else if (action.type === FETCH_MASTERY_REQUEST) {
+    } else if (action.type === FETCH_MASTERY_REQUEST) {
 		return Object.assign({}, state, {
 			loading: true,
 		})
-	}
-
-	else if (action.type === FETCH_MASTERY_SUCCESS) {
+	} else if (action.type === FETCH_MASTERY_SUCCESS) {
 		return Object.assign({}, state, {
 			mastery: action.mastery,
 			loading: false,
 			error: null
 		})
-	}
-
-	else if (action.type === FETCH_MASTERY_ERROR) {
+	} else if (action.type === FETCH_MASTERY_ERROR) {
 		return Object.assign({}, state, {
 			loading: false,
 			error: action.error
 		})
-    }
-
-    else if (action.type === FETCH_QUESTION_REQUEST) {
+    } else if (action.type === FETCH_QUESTION_REQUEST) {
 		return Object.assign({}, state, {
 			loading: true,
 		})
-	}
-
-	else if (action.type === FETCH_QUESTION_SUCCESS) {
+	} else if (action.type === FETCH_QUESTION_SUCCESS) {
 		return Object.assign({}, state, {
 			question: action.question,
 			loading: false,
 			error: null
 		})
-	}
-
-	else if (action.type === FETCH_QUESTION_ERROR) {
+	} else if (action.type === FETCH_QUESTION_ERROR) {
 		return Object.assign({}, state, {
 			loading: false,
 			error: action.error
 		})
-    }
-    
-    else if (action.type === SEND_QUESTION_RESPONSE_REQUEST) {
+    } else if (action.type === SEND_QUESTION_RESPONSE_REQUEST) {
 		return Object.assign({}, state, {
 			loading: true,
 		})
-	}
-
-	else if (action.type === SEND_QUESTION_RESPONSE_SUCCESS) {
+	} else if (action.type === SEND_QUESTION_RESPONSE_SUCCESS) {
 		return Object.assign({}, state, {
 			loading: false,
 			error: null
 		})
-	}
-
-	else if (action.type === SEND_QUESTION_RESPONSE_ERROR) {
+	} else if (action.type === SEND_QUESTION_RESPONSE_ERROR) {
 		return Object.assign({}, state, {
 			loading: false,
 			error: action.error
 		})
-	}
-    
-    else if (action.type === GENERATE_QUESTION_FEEDBACK) {
+	} else if (action.type === GENERATE_QUESTION_FEEDBACK) {
           return Object.assign({}, state, {
             word: action.word,
             definition: action.definition,
@@ -141,15 +113,11 @@ export const reducer = (state = initialState, action) => {
             prompt: action.prompt,
             correct: action.correct
           })
-    }
-    
-    else if (action.type === TOGGLE_VIEW_EXAMPLE) {
+    } else if (action.type === TOGGLE_VIEW_EXAMPLE) {
         return Object.assign({}, state, {
             viewExample: !state.viewExample
         })
-    }
-
-    else if (action.type === RESET_STATE) {
+    } else if (action.type === RESET_STATE) {
         return Object.assign({}, state, {
           question: null,
           word: null,
@@ -162,9 +130,7 @@ export const reducer = (state = initialState, action) => {
           wordSetChosen: null,
           menuVisible: false
         })
-    }
-
-    else if (action.type === NEXT_QUESTION) {
+    } else if (action.type === NEXT_QUESTION) {
         return Object.assign({}, state, {
           question: null,
           word: null,
