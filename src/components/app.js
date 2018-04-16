@@ -9,7 +9,7 @@ import Dashboard from './dashboard';
 import About from './about';
 import FAQs from './faqs';
 import RegistrationPage from './registration-page';
-import {refreshAuthToken} from '../actions/auth';
+import { refreshAuthToken } from '../actions/auth';
 import './app.css';
 
 export class App extends React.Component {
@@ -73,5 +73,4 @@ const mapStateToProps = state => ({
     menuVisible: state.question.menuVisible
 });
 
-// Deal with update blocking - https://reacttraining.com/react-router/web/guides/dealing-with-update-blocking
 export default withRouter(connect(mapStateToProps)(App));

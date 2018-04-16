@@ -11,17 +11,17 @@ export class WordSetsDashboard extends React.Component {
     
     render() {
 
-        let welcomeMessage;
         let newWordSetsMessage;
         let usersWordSets;
-        let newWordSets = (
-            <div className="loading">Loading...</div>
-        )
+        let newWordSets = this.props.wordSets;
+        let welcomeMessage = (
+            <h2>Welcome to SATutor!</h2>
+        );
 
-        if (this.props.wordSets) {
+        if (this.props.usersWordSets) {
 
             usersWordSets = this.props.usersWordSets;
-            newWordSets = this.props.wordSets;
+            
 
             usersWordSets = usersWordSets.map( wordSet => {
                 for (let i = 0; i < newWordSets.length; i++) {
@@ -45,20 +45,14 @@ export class WordSetsDashboard extends React.Component {
                     </div>
                 )
             });
-    
-            welcomeMessage = <h2>Welcome to SATutor!</h2>;
-
-            newWordSetsMessage = <h3>Want to Try a New Word Set?</h3>;
         }
 
         if (!newWordSets[0]) {
-            newWordSetsMessage = (
-                <div className="hide"></div>
-            )
             newWordSets = (
                 <div className="hide"></div>
             )
         } else {
+            newWordSetsMessage = <h3>Want to Try a New Word Set?</h3>
             newWordSets = newWordSets.map( wordSet => {
                 return (
                     <div className="word-set-container" key={wordSet.id}>
@@ -80,7 +74,6 @@ export class WordSetsDashboard extends React.Component {
 }
 
 const mapStateToProps = state => {
-    const {currentUser} = state.auth;
     return {
         usersWordSets: state.auth.currentUser.wordSets,
         wordSets: state.question.wordSets
