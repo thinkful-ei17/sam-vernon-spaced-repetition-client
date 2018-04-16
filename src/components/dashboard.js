@@ -9,7 +9,7 @@ import Example from './example';
 import WordSetOverview from './word-set-overview';
 
 export class Dashboard extends React.Component {
-    componentDidMount() {
+    componentWillMount() {
         this.props.dispatch(fetchWordSets());
     }
     
