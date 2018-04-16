@@ -25,10 +25,7 @@ export function WordSetOverview(props) {
 }
 
 const mapStateToProps = state => {
-    const {currentUser} = state.auth;
     return {
-        username: state.auth.currentUser.username,
-        name: `${currentUser.firstName} ${currentUser.lastName}`,
         mastery: state.question.mastery,
         wordSet: state.question.wordSetChosen
     };

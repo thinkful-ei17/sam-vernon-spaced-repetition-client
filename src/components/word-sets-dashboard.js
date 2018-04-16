@@ -63,7 +63,6 @@ export class WordSetsDashboard extends React.Component {
                 return (
                     <div className="word-set-container" key={wordSet.id}>
                         <button className="word-set-button" value={wordSet.name} onClick={event => this.selectWordSet(event.target.value)}>{wordSet.name}</button>
-                        {/* <div>{wordSet.description}</div> */}
                     </div>
                 )
             });
@@ -83,8 +82,6 @@ export class WordSetsDashboard extends React.Component {
 const mapStateToProps = state => {
     const {currentUser} = state.auth;
     return {
-        username: state.auth.currentUser.username,
-        name: `${currentUser.firstName} ${currentUser.lastName}`,
         usersWordSets: state.auth.currentUser.wordSets,
         wordSets: state.question.wordSets
     };
