@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
-import { selectWordSet } from '../actions/question';
+import { fetchWordSet } from '../actions/question';
 import './word-sets-dashboard.css';
 
 export class WordSetsDashboard extends React.Component {
-    selectWordSet(wordSet) {
-        this.props.dispatch(selectWordSet(wordSet))
+    fetchWordSet(wordSet) {
+        this.props.dispatch(fetchWordSet(wordSet))
     }
     
     render() {
@@ -42,7 +42,7 @@ export class WordSetsDashboard extends React.Component {
                         
                     return (
                         <div className="word-set-container" key={wordSet.id}>
-                            <button className="word-set-button" value={wordSet.name} onClick={event => this.selectWordSet(event.target.value)}>{wordSet.name}</button>
+                            <button className="word-set-button" value={wordSet.name} onClick={event => this.fetchWordSet(event.target.value)}>{wordSet.name}</button>
                             <div className="progress-meter">
                                 <div className="current-progress" style={style}></div>
                             </div>
@@ -55,13 +55,16 @@ export class WordSetsDashboard extends React.Component {
             if (!newWordSets[0]) {
                 newWordSets = (
                     <div className="hide"></div>
+                );
+                newWordSetsMessage = (
+                    <div className="hide"></div>
                 )
             } else {
                 newWordSetsMessage = <h3>Want to Try a New Word Set?</h3>
                 newWordSets = newWordSets.map( wordSet => {
                     return (
                         <div className="word-set-container" key={wordSet.id}>
-                            <button className="word-set-button" value={wordSet.name} onClick={event => this.selectWordSet(event.target.value)}>{wordSet.name}</button>
+                            <button className="word-set-button" value={wordSet.name} onClick={event => this.fetchWordSet(event.target.value)}>{wordSet.name}</button>
                         </div>
                     )
                 });

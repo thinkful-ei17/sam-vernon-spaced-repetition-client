@@ -46,6 +46,48 @@ export const fetchWordSets = () => (dispatch, getState) => {
 		)
 }
 
+export const FETCH_WORDSET_REQUEST = 'FETCH_WORDSET_REQUEST';
+export const fetchWordSetRequest = () => ({
+  type: FETCH_WORDSET_REQUEST
+});
+
+export const FETCH_WORDSET_SUCCESS = 'FETCH_WORDSET_SUCCESS';
+export const fetchWordSetSuccess = wordSet => ({
+  type: FETCH_WORDSET_SUCCESS,
+  mastery: wordSet.mastery
+});
+
+export const FETCH_WORDSET_ERROR = 'FETCH_WORDSET_ERROR';
+export const fetchWordSetError = error => ({
+  type: FETCH_WORDSET_ERROR,
+  error
+});
+
+export const fetchWordSet = wordSet => (dispatch, getState) => {
+    dispatch(fetchWordSetRequest());
+	const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/user/wordSet?wordSet=${wordSet}`, {
+        method: 'GET',
+        headers: {
+            'content-type': 'application/json',
+			'Authorization': `Bearer ${authToken}`
+		}
+    })
+				.then(res => {
+					if (!res.ok) {
+						return Promise.reject('Something has gone wrong');
+					}
+					
+					return res.json()
+				})
+        .then(wordSet => {
+            dispatch(fetchWordSetSuccess(wordSet))
+		})
+		.catch(err => 
+			dispatch(fetchWordSetError(err))
+		)
+};
+
 export const SELECT_WORD_SET = 'SELECT_WORD_SET';
 export const selectWordSet = wordSet => ({
   type: SELECT_WORD_SET,
@@ -121,7 +163,13 @@ export const fetchMastery = wordSet => (dispatch, getState) => {
 			'Authorization': `Bearer ${authToken}`
 		}
     })
-        .then(res => res.json())
+				.then(res => {
+					if (!res.ok) {
+						return Promise.reject('Something has gone wrong');
+					}
+					
+					return res.json()
+				})
         .then(wordSet => {
             dispatch(fetchMasterySuccess(wordSet))
 		})

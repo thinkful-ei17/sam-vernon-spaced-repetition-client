@@ -2,6 +2,9 @@ import {
     FETCH_WORDSETS_REQUEST,
     FETCH_WORDSETS_SUCCESS,
     FETCH_WORDSETS_ERROR,
+    FETCH_WORDSET_REQUEST,
+    FETCH_WORDSET_SUCCESS,
+    FETCH_WORDSET_ERROR,
     FETCH_MASTERY_REQUEST,
     FETCH_MASTERY_SUCCESS,
     FETCH_MASTERY_ERROR,
@@ -15,13 +18,12 @@ import {
     TOGGLE_VIEW_EXAMPLE,
     RESET_STATE,
     TOGGLE_MENU_VISIBLE,
-    SELECT_WORD_SET,
     NEXT_QUESTION
 } from '../actions/question';
 
 const initialState = {
     wordSets: null,
-    wordSetChosen: null,
+    wordSet: null,
     menuVisible: false,
     loading: false,
     error: null,
@@ -56,10 +58,21 @@ export const reducer = (state = initialState, action) => {
 			loading: false,
 			error: action.error
 		})
-    } else if (action.type === SELECT_WORD_SET) {
-        return Object.assign({}, state, {
-            wordSetChosen: action.wordSet
-        })
+    } else if (action.type === FETCH_WORDSET_REQUEST) {
+		return Object.assign({}, state, {
+			loading: true,
+		})
+	} else if (action.type === FETCH_WORDSET_SUCCESS) {
+		return Object.assign({}, state, {
+			wordSet: action.wordSet,
+			loading: false,
+			error: null
+		})
+	} else if (action.type === FETCH_WORDSET_ERROR) {
+		return Object.assign({}, state, {
+			loading: false,
+			error: action.error
+		})
     } else if (action.type === FETCH_MASTERY_REQUEST) {
 		return Object.assign({}, state, {
 			loading: true,

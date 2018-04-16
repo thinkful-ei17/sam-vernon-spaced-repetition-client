@@ -5,7 +5,7 @@ import { fetchMastery, fetchQuestion, sendQuestionResponse, generateQuestionFeed
 import './question.css';
 
 export class Question extends React.Component {
-    componentDidMount() {
+    componentWillMount() {
         this.props.dispatch(fetchMastery(this.props.wordSet));
         this.props.dispatch(fetchQuestion(this.props.wordSet));
     }
