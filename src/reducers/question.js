@@ -128,7 +128,8 @@ export const reducer = (state = initialState, action) => {
           correct: null,
           viewExample: false,
           wordSetChosen: null,
-          menuVisible: false
+          menuVisible: false,
+          mastery: null
         })
     } else if (action.type === NEXT_QUESTION) {
         return Object.assign({}, state, {

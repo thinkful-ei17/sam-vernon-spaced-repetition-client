@@ -15,8 +15,8 @@ export class Menu extends React.Component {
     }
 
     changeWordSets() {
+        this.props.dispatch(resetState());
         this.props.dispatch(updateUserWordSets());
-        this.props.dispatch(resetState())
     }
 
     render() {
