@@ -54,7 +54,7 @@ export const fetchWordSetRequest = () => ({
 export const FETCH_WORDSET_SUCCESS = 'FETCH_WORDSET_SUCCESS';
 export const fetchWordSetSuccess = wordSet => ({
   type: FETCH_WORDSET_SUCCESS,
-  mastery: wordSet.mastery
+  wordSet
 });
 
 export const FETCH_WORDSET_ERROR = 'FETCH_WORDSET_ERROR';
@@ -77,22 +77,15 @@ export const fetchWordSet = wordSet => (dispatch, getState) => {
 					if (!res.ok) {
 						return Promise.reject('Something has gone wrong');
 					}
-					
 					return res.json()
 				})
-        .then(wordSet => {
-            dispatch(fetchWordSetSuccess(wordSet))
+        .then(user => {
+          dispatch(fetchWordSetSuccess(user))
 		})
 		.catch(err => 
 			dispatch(fetchWordSetError(err))
 		)
 };
-
-export const SELECT_WORD_SET = 'SELECT_WORD_SET';
-export const selectWordSet = wordSet => ({
-  type: SELECT_WORD_SET,
-  wordSet
-});
 
 export const FETCH_QUESTION_REQUEST = 'FETCH_QUESTION_REQUEST';
 export const fetchQuestionRequest = () => ({

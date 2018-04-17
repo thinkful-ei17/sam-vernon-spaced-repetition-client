@@ -140,7 +140,7 @@ export const reducer = (state = initialState, action) => {
           prompt: null,
           correct: null,
           viewExample: false,
-          wordSetChosen: null,
+          wordSet: null,
           menuVisible: false,
           mastery: null
         })

@@ -10,13 +10,13 @@ export class WordSetsDashboard extends React.Component {
     }
     
     render() {
-        let newWordSetsMessage = (
-            <div>Loading...</div>
-        );
         let usersWordSets;
         let newWordSets;
         let welcomeMessage = (
             <h2>Welcome to SATutor!</h2>
+        );
+        let newWordSetsMessage = (
+            <div>Loading...</div>
         );
 
         if (this.props.wordSets) {

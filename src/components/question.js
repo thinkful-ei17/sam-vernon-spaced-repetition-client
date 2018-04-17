@@ -68,7 +68,7 @@ export class Question extends React.Component {
 const mapStateToProps = state => {
     return {
         question: state.question.question,
-        wordSet: state.question.wordSetChosen
+        wordSet: state.question.wordSet.name
     };
 };
 

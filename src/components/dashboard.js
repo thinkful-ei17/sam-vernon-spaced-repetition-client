@@ -9,14 +9,14 @@ import Example from './example';
 import WordSetOverview from './word-set-overview';
 
 export class Dashboard extends React.Component {
-    componentWillMount() {
+    componentDidMount() {
         this.props.dispatch(fetchWordSets());
     }
     
     render() {
         let content = <WordSetsDashboard />;
         
-        if (this.props.question.wordSetChosen !== null) {
+        if (this.props.question.wordSet !== null) {
             content = (
                 <div>
                     <WordSetOverview />
