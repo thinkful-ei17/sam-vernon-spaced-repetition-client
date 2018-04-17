@@ -46,47 +46,6 @@ export const fetchWordSets = () => (dispatch, getState) => {
 		)
 }
 
-export const FETCH_WORDSET_REQUEST = 'FETCH_WORDSET_REQUEST';
-export const fetchWordSetRequest = () => ({
-  type: FETCH_WORDSET_REQUEST
-});
-
-export const FETCH_WORDSET_SUCCESS = 'FETCH_WORDSET_SUCCESS';
-export const fetchWordSetSuccess = wordSet => ({
-  type: FETCH_WORDSET_SUCCESS,
-  wordSet
-});
-
-export const FETCH_WORDSET_ERROR = 'FETCH_WORDSET_ERROR';
-export const fetchWordSetError = error => ({
-  type: FETCH_WORDSET_ERROR,
-  error
-});
-
-export const fetchWordSet = wordSet => (dispatch, getState) => {
-    dispatch(fetchWordSetRequest());
-	const authToken = getState().auth.authToken;
-    return fetch(`${API_BASE_URL}/user/wordSet?wordSet=${wordSet}`, {
-        method: 'GET',
-        headers: {
-            'content-type': 'application/json',
-			'Authorization': `Bearer ${authToken}`
-		}
-    })
-				.then(res => {
-					if (!res.ok) {
-						return Promise.reject('Something has gone wrong');
-					}
-					return res.json()
-				})
-        .then(user => {
-          dispatch(fetchWordSetSuccess(user))
-		})
-		.catch(err => 
-			dispatch(fetchWordSetError(err))
-		)
-};
-
 export const FETCH_QUESTION_REQUEST = 'FETCH_QUESTION_REQUEST';
 export const fetchQuestionRequest = () => ({
   type: FETCH_QUESTION_REQUEST

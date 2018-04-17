@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
-import { fetchWordSet, selectWordSet } from '../actions/question';
+import { selectWordSet } from '../actions/question';
+import { fetchWordSet } from '../actions/users';
 import './word-sets-dashboard.css';
 
 export class WordSetsDashboard extends React.Component {
     selectWordSet(wordSet) {
-        this.props.dispatch(selectWordSet(wordSet));
         this.props.dispatch(fetchWordSet(wordSet));
+        this.props.dispatch(selectWordSet(wordSet));
     }
     
     render() {

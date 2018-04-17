@@ -9,7 +9,10 @@ import {
 import {
     UPDATE_USER_WORD_SETS_ERROR,
     UPDATE_USER_WORD_SETS_SUCCESS,
-    UPDATE_USER_WORD_SETS_REQUEST
+    UPDATE_USER_WORD_SETS_REQUEST,
+    FETCH_WORDSET_ERROR,
+    FETCH_WORDSET_REQUEST,
+    FETCH_WORDSET_SUCCESS
 } from '../actions/users';
 
 const initialState = {
@@ -59,7 +62,22 @@ export const reducer = (state = initialState, action) => {
             loading: false,
             error: action.error
         });
-    } 
+    } else if (action.type === FETCH_WORDSET_REQUEST) {
+		return Object.assign({}, state, {
+			loading: true,
+		})
+	} else if (action.type === FETCH_WORDSET_SUCCESS) {
+		return Object.assign({}, state, {
+			wordSet: action.wordSet,
+			loading: false,
+			error: null
+		})
+	} else if (action.type === FETCH_WORDSET_ERROR) {
+		return Object.assign({}, state, {
+			loading: false,
+			error: action.error
+		})
+    }
     
     return state;
 }

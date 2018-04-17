@@ -2,9 +2,6 @@ import {
     FETCH_WORDSETS_REQUEST,
     FETCH_WORDSETS_SUCCESS,
     FETCH_WORDSETS_ERROR,
-    FETCH_WORDSET_REQUEST,
-    FETCH_WORDSET_SUCCESS,
-    FETCH_WORDSET_ERROR,
     SELECT_WORDSET,
     FETCH_MASTERY_REQUEST,
     FETCH_MASTERY_SUCCESS,
@@ -55,21 +52,6 @@ export const reducer = (state = initialState, action) => {
 			error: null
 		})
 	} else if (action.type === FETCH_WORDSETS_ERROR) {
-		return Object.assign({}, state, {
-			loading: false,
-			error: action.error
-		})
-    } else if (action.type === FETCH_WORDSET_REQUEST) {
-		return Object.assign({}, state, {
-			loading: true,
-		})
-	} else if (action.type === FETCH_WORDSET_SUCCESS) {
-		return Object.assign({}, state, {
-			wordSet: action.wordSet,
-			loading: false,
-			error: null
-		})
-	} else if (action.type === FETCH_WORDSET_ERROR) {
 		return Object.assign({}, state, {
 			loading: false,
 			error: action.error
@@ -145,7 +127,7 @@ export const reducer = (state = initialState, action) => {
           prompt: null,
           correct: null,
           viewExample: false,
-          wordSet: null,
+          wordSetChosen: null,
           menuVisible: false,
           mastery: null
         })
