@@ -129,6 +129,12 @@ export const fetchQuestion = wordSet => (dispatch, getState) => {
 		)
 }
 
+export const SELECT_WORDSET = 'SELECT_WORDSET';
+export const selectWordSet = wordSet => ({
+	type: SELECT_WORDSET,
+	wordSet
+});
+
 export const FETCH_MASTERY_REQUEST = 'FETCH_MASTERY_REQUEST';
 export const fetchMasteryRequest = () => ({
   type: FETCH_MASTERY_REQUEST

@@ -5,6 +5,7 @@ import {
     FETCH_WORDSET_REQUEST,
     FETCH_WORDSET_SUCCESS,
     FETCH_WORDSET_ERROR,
+    SELECT_WORDSET,
     FETCH_MASTERY_REQUEST,
     FETCH_MASTERY_SUCCESS,
     FETCH_MASTERY_ERROR,
@@ -23,7 +24,7 @@ import {
 
 const initialState = {
     wordSets: null,
-    wordSet: null,
+    wordSetChosen: null,
     menuVisible: false,
     loading: false,
     error: null,
@@ -73,7 +74,11 @@ export const reducer = (state = initialState, action) => {
 			loading: false,
 			error: action.error
 		})
-    } else if (action.type === FETCH_MASTERY_REQUEST) {
+    } else if (action.type === SELECT_WORDSET) {
+		return Object.assign({}, state, {
+			wordSetChosen: action.wordSet
+		})
+	} else if (action.type === FETCH_MASTERY_REQUEST) {
 		return Object.assign({}, state, {
 			loading: true,
 		})

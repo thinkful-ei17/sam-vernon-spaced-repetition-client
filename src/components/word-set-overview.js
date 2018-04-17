@@ -7,7 +7,7 @@ export function WordSetOverview(props) {
     let progress;
 
     if (props.mastery >= 0) {
-        progress = `Progress: ${props.wordSet.mastery}%`;
+        progress = `Progress: ${props.mastery}%`;
     }
 
     if (props.mastery === null) {
@@ -25,7 +25,8 @@ export function WordSetOverview(props) {
 
 const mapStateToProps = state => {
     return {
-        wordSet: state.question.wordSet
+        wordSet: state.question.wordSetChosen,
+        mastery: state.question.mastery
     };
 };
 

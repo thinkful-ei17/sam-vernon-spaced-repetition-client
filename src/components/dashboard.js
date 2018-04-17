@@ -16,7 +16,7 @@ export class Dashboard extends React.Component {
     render() {
         let content = <WordSetsDashboard />;
         
-        if (this.props.question.wordSet !== null) {
+        if (this.props.question.wordSetChosen !== null) {
             content = (
                 <div>
                     <WordSetOverview />
