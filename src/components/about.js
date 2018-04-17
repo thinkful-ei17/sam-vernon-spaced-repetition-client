@@ -15,10 +15,11 @@ export default function About() {
 
             <h3 className="about-list-header">Technology Stack:</h3>
             <ul className="about-list">
-                <li><span className="about-list-item-title">Front End:</span> HTML, CSS, JS, React/Redux, Netlify</li>
-                <li><span className="about-list-item-title">Back End:</span> Node.js, Express.js, Heroku</li>
+                <li><span className="about-list-item-title">Front End:</span> React, Redux, HTML, CSS, JS</li>
+                <li><span className="about-list-item-title">Back End:</span> Node.js, Express.js</li>
                 <li><span className="about-list-item-title">Authentication:</span> Passport.js, JWT</li>
-                <li><span className="about-list-item-title">Database:</span> MongoDB/mLab, Mongoose</li>
+                <li><span className="about-list-item-title">Database:</span> MongoDB, Mongoose</li>
+                <li><span className="about-list-item-title">Hosting Platforms:</span> Netlify, Heroku, mLab</li>
             </ul>
             
             <h3 className="about-list-header">Engineering Team:</h3>
