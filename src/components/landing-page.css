@@ -1,3 +1,17 @@
 .landing-page {
     text-align: center;
 }
+
+.log-in-text-block {
+    line-height: 1.8em;
+    margin: 0;
+}
+
+.log-in-links-text {
+    color: #253628;
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+}
