@@ -1,22 +1,30 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
+import { login } from '../actions/auth';
 import './landing-page.css';
 
 import LoginForm from './login-form';
 
 export function LandingPage(props) {
-    // If we are logged in redirect straight to the user's dashboard
+    // If we are logged in redirect straight to the user's dashboard    
     if (props.loggedIn) {
         return <Redirect to="/dashboard" />;
+    }
+
+    const demoLogIn = () => {
+        return props.dispatch(login('demoUser', 'demopassword'));
     }
 
     return (
         <div className="landing-page">
             <h2>Welcome to SATutor</h2>
             <LoginForm />
-            <p>
-                Don't have an account? <Link to="/register">Register now.</Link>
+            <p className='log-in-text-block'>
+                Don't have an account? <Link to="/register"><span className='log-in-links-text'>Register now.</span></Link>
+            </p>
+            <p className='log-in-text-block'>
+                Or check it out with our <Link to='/dashboard' onClick={() => demoLogIn()}><span className='log-in-links-text'>Demo Account</span></Link>.
             </p>
         </div>
     );
