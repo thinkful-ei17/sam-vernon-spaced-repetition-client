@@ -20,8 +20,8 @@ export class WordSetsDashboard extends React.Component {
         );
 
         if (this.props.wordSets) {
-            
-            newWordSets = this.props.wordSets;
+            // For first iteration when only wanting to display one Word Set
+            newWordSets = this.props.wordSets.slice(0,1);
 
             if (this.props.usersWordSets) {
 
