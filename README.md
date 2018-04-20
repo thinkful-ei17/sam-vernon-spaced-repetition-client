@@ -21,6 +21,32 @@ Example Sentence:
 ----------------------------------------------------------------------------------------------
 ![ExampleSentence](./screenshots/satutor-example-sentence.png "ExampleSentence")
 
+## Component Breakdown:
+
+Standard Login Form and Registration Page. Before Login user can also access About and FAQs pages that describe the foundational principles behind the purpose the app, the technology that makes it work, and how a user can engage with the app.
+
+After login the user has a few components that they cycle through:
+
+##### Landing Page:
+
+User selects the word set they want to work on. Newly created word sets can be added at any time to the landing page, so users will have access to more words to practice as the app grows and more word sets are developed.
+
+##### Question:
+
+Once the user selects a given word set they are presented with the first word which is a multiple choice question trying to match the word that is most similar to the definition of the word.
+
+##### Feedback:
+
+After making their selection the user is presented with feedback about how they did on the question. Feedback also includes the definition of the given word.
+
+##### Example:
+
+If the user is still confused about the meaning of a word, or simply wants to reinforce their understanding, they can view an example of the given word used in a sentence.
+
+##### Word Set Overview
+
+Throughout a users time working on a word set they will see their mastery progress of that given word set. That progress percentage will dynamically change throughout a users time working on a given word set when they've hit a certain threshold where the user can be confident they know a given word.
+
 ## Algorithm:
 ##### Name: 
 Spaced-Repetition
