@@ -15,3 +15,15 @@
 a {
     text-decoration: none;
 }
+
+/* General Header Styles */
+
+.primary-header {
+    color: #253628;
+    font-size: 40px; 
+}
+
+.secondary-header {
+    color: #253628;
+    font-size: 32px; 
+}

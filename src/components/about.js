@@ -4,7 +4,7 @@ import './about.css';
 export default function About() {
     return (
         <div className="about-page">
-            <h2>About SATutor</h2>
+            <h2 className='primary-header'>About SATutor</h2>
 
             <h3 className="about-list-header">Algorithm:</h3>
             <ul className="about-list">

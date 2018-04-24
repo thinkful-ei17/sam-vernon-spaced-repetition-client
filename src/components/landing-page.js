@@ -18,7 +18,7 @@ export function LandingPage(props) {
 
     return (
         <div className="landing-page">
-            <h2>Welcome to SATutor</h2>
+            <h2 className='primary-header'>Welcome to SATutor</h2>
             <LoginForm />
             <p className='log-in-text-block'>
                 Don't have an account? <Link to="/register"><span className='log-in-links-text'>Register now.</span></Link>

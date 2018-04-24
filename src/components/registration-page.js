@@ -13,10 +13,10 @@ export function RegistrationPage(props) {
 
     return (
         <div className="registration-page">
-            <h2>Register for SATutor</h2>
+            <h2 className='primary-header'>Register for SATutor</h2>
             <RegistrationForm />
             <p>
-                Already have an account? <Link to="/"><span className='log-in-links-text'> Login here.</span></Link>
+                Already have an account? <Link to="/login"><span className='log-in-links-text'> Login here.</span></Link>
             </p>
         </div>
     );
