@@ -27,11 +27,11 @@ export class Feedback extends React.Component {
         }
 
         let feedback = (
-            <h3 className="question-feedback-text">Incorrect. The answer was <span className="correct-answer-text">{correctAnswer}</span>.</h3>
+            <h3 className="question-feedback-text content-text-normal">Incorrect. The answer was <span className="correct-answer-text">{correctAnswer}</span>.</h3>
         )
         if (correct) {
             feedback = (
-                <h3 className="question-feedback-text">Correct! The answer was <span className="correct-answer-text">{correctAnswer}</span>.</h3>
+                <h3 className="question-feedback-text content-text-normal">Correct! The answer was <span className="correct-answer-text">{correctAnswer}</span>.</h3>
             )
         }
 
@@ -39,9 +39,9 @@ export class Feedback extends React.Component {
         
         return (
             <div className="feedback">
-                <h2 className="question-word">{word}</h2>
+                <h2 className="question-word primary-header">{word}</h2>
                 <div className="word-definition-container">    
-                    <h3 className="word-definition">{definition}</h3>
+                    <h3 className="word-definition content-text-normal">{definition}</h3>
                 </div>
                 {feedback}
                 <div className="question-options-container">

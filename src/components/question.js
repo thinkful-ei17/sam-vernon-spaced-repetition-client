@@ -49,7 +49,7 @@ export class Question extends React.Component {
 
             return (
                 <div className="question">
-                    <h2>{word}</h2>
+                    <h2 className="primary-header">{word}</h2>
                     <div className="question-options-button-container">
                         <button className="question-option-button" value={shuffledArray[0]} onClick = { event => handleResponse(event.target.value)}>A. {shuffledArray[0]}</button>
                         <button className="question-option-button" value={shuffledArray[1]} onClick = { event => handleResponse(event.target.value)}>B. {shuffledArray[1]}</button>

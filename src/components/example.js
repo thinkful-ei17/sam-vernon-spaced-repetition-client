@@ -19,9 +19,9 @@ export class Example extends React.Component {
         
         return (
             <div className="feedback">
-                <h2 className="question-word">{word}</h2>
+                <h2 className="question-word primary-header">{word}</h2>
                 <div className="example-sentence-container">    
-                    <h3 className="example-sentence">{prompt}</h3>
+                    <h3 className="example-sentence content-text-normal">{prompt}</h3>
                 </div>
                 <div className="feedback-buttons-container">
                     <button className="feedback-button" onClick={() => this.toggleViewExample()}>Back</button>

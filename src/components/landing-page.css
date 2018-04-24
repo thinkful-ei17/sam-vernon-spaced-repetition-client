@@ -16,7 +16,7 @@ a {
     text-decoration: none;
 }
 
-/* General Header Styles */
+/* General Text Size Styles */
 
 .primary-header {
     color: #253628;
@@ -25,5 +25,9 @@ a {
 
 .secondary-header {
     color: #253628;
-    font-size: 32px; 
+    font-size: 30px; 
+}
+
+.content-text-normal {
+    font-size: 20px;
 }

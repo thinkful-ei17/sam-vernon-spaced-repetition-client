@@ -16,7 +16,7 @@ export function WordSetOverview(props) {
     }
 
     return (
-        <div className="word-set-overview">
+        <div className="word-set-overview content-text-normal">
             Word Set: {props.wordSet}
             <br />
             {progress}

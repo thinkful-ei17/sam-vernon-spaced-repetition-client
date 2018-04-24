@@ -15,7 +15,7 @@ export function RegistrationPage(props) {
         <div className="registration-page">
             <h2 className='primary-header'>Register for SATutor</h2>
             <RegistrationForm />
-            <p>
+            <p className='content-text-normal'>
                 Already have an account? <Link to="/login"><span className='log-in-links-text'> Login here.</span></Link>
             </p>
         </div>
