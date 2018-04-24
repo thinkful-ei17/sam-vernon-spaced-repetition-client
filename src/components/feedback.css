@@ -8,6 +8,8 @@
     padding: 10px;
     margin: 0 10%;
     border-radius: 8px;
+    border: 1px solid #C1C0B9;
+    box-shadow: 1px 1px #C1C0B9;
 }
 
 .word-definition {
