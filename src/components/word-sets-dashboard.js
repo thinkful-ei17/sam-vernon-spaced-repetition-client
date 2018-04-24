@@ -13,10 +13,10 @@ export class WordSetsDashboard extends React.Component {
         let usersWordSets;
         let newWordSets;
         let welcomeMessage = (
-            <h2>Welcome to SATutor!</h2>
+            <h2 className='primary-header'>Welcome to SATutor!</h2>
         );
         let newWordSetsMessage = (
-            <div>Loading...</div>
+            <div className='content-text-normal'>Loading...</div>
         );
 
         if (this.props.wordSets) {
@@ -46,7 +46,7 @@ export class WordSetsDashboard extends React.Component {
                             <div className="progress-meter">
                                 <div className="current-progress" style={style}></div>
                             </div>
-                            <div>Progress: {wordSet.mastery}%</div>
+                            <div className='content-text-normal'>Progress: {wordSet.mastery}%</div>
                         </div>
                     )
                 });
@@ -60,7 +60,7 @@ export class WordSetsDashboard extends React.Component {
                     <div className="hide"></div>
                 )
             } else {
-                newWordSetsMessage = <h3>Want to Try a New Word Set?</h3>
+                newWordSetsMessage = <h3 className='secondary-header'>Want to Try a New Word Set?</h3>
                 newWordSets = newWordSets.map( wordSet => {
                     return (
                         <div className="word-set-container" key={wordSet.id}>

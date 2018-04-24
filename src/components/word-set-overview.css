@@ -5,6 +5,8 @@
     padding: 15px;
     width: max-content;
     border-radius: 8px;
+    border: 1px solid #C1C0B9;
+    box-shadow: 1px 1px #C1C0B9;
     font-weight: bold;
     line-height: 1.4;
 }
