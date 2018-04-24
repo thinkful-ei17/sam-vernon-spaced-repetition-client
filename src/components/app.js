@@ -1,11 +1,12 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {Route, withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Route, withRouter } from 'react-router-dom';
 
 import Menu from './menu';
 import HeaderBar from './header-bar';
 import LandingPage from './landing-page';
 import Dashboard from './dashboard';
+import LoginPage from './login-page';
 import About from './about';
 import FAQs from './faqs';
 import RegistrationPage from './registration-page';
@@ -58,6 +59,7 @@ export class App extends React.Component {
                 <div className={appContent}>
                     <Route exact path="/" component={LandingPage} />
                     <Route exact path="/dashboard" component={Dashboard} />
+                    <Route exact path="/login" component={LoginPage} />
                     <Route exact path="/register" component={RegistrationPage} />
                     <Route exact path="/about" component={About} />
                     <Route exact path="/faqs" component={FAQs} />

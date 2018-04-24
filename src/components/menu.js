@@ -22,7 +22,7 @@ export class Menu extends React.Component {
     render() {
         let menu = (
             <div className="menu-container">
-                <Link to="/" className="menu-link" onClick={() => this.props.dispatch(toggleMenuVisible())}>
+                <Link to="/login" className="menu-link" onClick={() => this.props.dispatch(toggleMenuVisible())}>
                     <h2 className="menu-item">Log In</h2>
                 </Link>
                 <Link to="/faqs" className="menu-link" onClick={() => this.props.dispatch(toggleMenuVisible())}>

@@ -24,7 +24,7 @@ export class HeaderBar extends React.Component {
             <h1 className="header-item" onClick={() => this.props.dispatch(resetState())}>SATutor</h1>
         );
         let logIn = (
-            <Link to="/" className="header-link desktop">
+            <Link to="/login" className="header-link desktop">
                 <h2 className="header-item">Log In</h2>
             </Link>
         );
